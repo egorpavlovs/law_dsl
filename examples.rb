@@ -10,5 +10,5 @@ require_relative 'dsl'
 request = {
   "заявитель"=>"физическое лицо"
 }
-
-p Dsl.run(request).apply_scenario('scenarios/test')
+scenario = 'scenarios/test'
+p Dsl.get_request(request, scenario)
