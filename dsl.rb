@@ -1,39 +1,30 @@
+require_relative 'conditions/applicant_methods'
+# require_relative 'conditions/inti.rb'
+
 class Dsl
+  include ApplicantMethods
+  # require :ApplicantMethods
+
+  def self.run(request_data)
+    Dsl.new(request_data)
+  end
 
   def initialize(request_data)
+    # Dir["conditions/*.rb"].each {|file| require_relative file }
     @request_hash = request_data
   end
 
-  def apply_methods(scenario)
+  def apply_scenario(scenario)
     lines =  File.open(scenario){ |file| file.read }.split(";")
     results = lines.map do |line|
       eval(line)
     end
-    p results
-    # p eval(results.join(" && "))
-  end
-
-  def физическое_лицо?(applicant)
-    allowed = ["физическое лицо", "физ лицо"].include?(applicant)
-    response = allowed ? allowed : "Не явлется физическим лицом"
-    format_result_methods_response(allowed, response)
-  end
-
-  def юридическое_лицо?(applicant)
-    allowed = ["юридическое лицо", "юр лицо"].include?(applicant)
-    response = allowed ? allowed : "Не явлется юридическим лицом"
-    format_result_methods_response(allowed, response)
+    # p results
+    eval(results.join(" && "))
   end
 
   def format_result_methods_response(allowed, response = nil)
-    if allowed
-      allowed
-    else
-      {
-        "response"=>response,
-        "allowed"=>allowed
-      }
-    end
+    allowed
   end
 
   def method_missing(m, *args, &block)
@@ -41,10 +32,3 @@ class Dsl
   end
 
 end
-
-request = {
-  "заявитель"=>"физическое лицо"
-}
-
-dsl = Dsl.new(request)
-dsl.apply_methods('doc')
