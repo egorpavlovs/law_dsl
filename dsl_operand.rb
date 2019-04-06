@@ -4,8 +4,6 @@ class DslOperand
 
   def initialize(allowed, response)
     @allowed = allowed
-    # понять как это делается
-    # @response = Array.new(response)
     @response = response.is_a?(Array) ? response : Array(response)
   end
 
