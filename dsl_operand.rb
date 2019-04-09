@@ -29,5 +29,9 @@ class DslOperand
     end
   end
 
+  def !@
+    DslOperand.new(!allowed, response)
+  end
+
 
 end
