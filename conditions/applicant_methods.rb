@@ -26,15 +26,16 @@ module ApplicantMethods
 
   def личность_заявителя_подтверждена_документ?(document_applicant)
     # Должны быть уже подтвержденные бумажные документы?
-    allowed = document_applicant.present?
-    response = allowed ? allowed : "Личность заявителя не подтверждена"
+    p document_applicant
+    allowed = document_applicant.nil?
+    response = allowed ? "Личность заявителя не подтверждена" : allowed
     format_result_methods_response(allowed, response)
   end
 
   # TODO: Реализовать запросы для подверждения личности (узать как это делается на практике)
   def личность_заявителя_подтверждена_есиа?(document_applicant)
-    allowed = document_applicant.present?
-    response = allowed ? allowed : "Личность заявителя не подтверждена, электронные реквизиты ЕСИА неправильные"
+    allowed = document_applicant.nil?
+    response = allowed ? "Личность заявителя не подтверждена, электронные реквизиты ЕСИА неправильные" : allowed
     format_result_methods_response(allowed, response)
   end
 

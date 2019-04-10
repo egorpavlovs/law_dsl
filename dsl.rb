@@ -6,7 +6,7 @@ class Dsl
   def self.make_decision(request_data, scenario)
     dsl = Dsl.new(request_data)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split(";")
-    results = lines.compact.map{ |line| dsl.instance_eval(line) }
+    results = lines.compact.map{ |line| dsl.instance_eval(line)}
     dsl.join_scenario_results(results)
   end
 
