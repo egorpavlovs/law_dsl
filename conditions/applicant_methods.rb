@@ -25,7 +25,7 @@ module ApplicantMethods
   end
 
   def applicant_identity_esia?(esia_data)
-    allowed = esia_data.nil?
+    allowed = !esia_data.nil?
     response = allowed ? I18n.t('applicant_identity_esia?(esia_data).responses.esia_data_present') : I18n.t('agent?(applicant).responses.esia_data_not_present')
     format_result_methods_response(allowed, response)
   end

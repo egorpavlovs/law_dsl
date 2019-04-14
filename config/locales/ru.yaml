@@ -28,10 +28,15 @@ ru:
     rigth_data:
       - представитель
     responses:
-      allowed: Является ипредставителем
+      allowed: Является представителем
       not_allowed: Не является представителем
   applicant_identity_esia?(esia_data):
     name_ru: личность_заявителя_есиа?(данные_есиа)
     responses:
-      esia_data_present: Является ипредставителем
-      esia_data_not_present: Не является представителем
+      esia_data_present: Личность заявителя подтверждена
+      esia_data_not_present: Личность заявителя не подтверждена
+  project_agreed?(project_number):
+    name_ru: проект_согласован?(номер_проекта)
+    responses:
+      project_number_present: Проект согласован
+      project_number_not_present: Проект не согласован
