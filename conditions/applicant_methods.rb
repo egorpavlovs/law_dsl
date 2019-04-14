@@ -6,30 +6,27 @@ module ApplicantMethods
     format_result_methods_response(allowed, response)
   end
 
-  def юридическое_лицо?(applicant)
-    allowed = ["юридическое лицо", "юр лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется юридическим лицом"
+  def legal_entity?(applicant)
+    allowed = I18n.t('legal_entity?(applicant).rigth_data').include?(applicant)
+    response = allowed ? I18n.t('legal_entity?(applicant).responses.allowed') : I18n.t('legal_entity?(applicant).responses.not_allowed')
     format_result_methods_response(allowed, response)
   end
 
-  def индивидуальный_предприниматель?(applicant)
-    allowed = ["индивидуальный предприниматель", "ип"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется индивидуальным предпринимателем"
+  def individual_entrepreneur?(applicant)
+    allowed = I18n.t('individual_entrepreneur?(applicant).rigth_data').include?(applicant)
+    response = allowed ? I18n.t('individual_entrepreneur?(applicant).responses.allowed') : I18n.t('individual_entrepreneur?(applicant).responses.not_allowed')
     format_result_methods_response(allowed, response)
   end
 
-  def доверенное_лицо?(applicant)
-    allowed = ["доверенное лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется доверенным лицом"
+  def agent?(applicant)
+    allowed = I18n.t('agent?(applicant).rigth_data').include?(applicant)
+    response = allowed ? I18n.t('agent?(applicant).responses.allowed') : I18n.t('agent?(applicant).responses.not_allowed')
     format_result_methods_response(allowed, response)
   end
 
-  # TODO: Реализовать запросы для подверждения личности (узать как это делается на практике)
-  # Все уже подтверждено, проверить есть или нет
-  def личность_заявителя_подтверждена_есиа?(document_applicant)
-    allowed = document_applicant.nil?
-    response = allowed ? "Личность заявителя не подтверждена, электронные реквизиты ЕСИА неправильные" : allowed
+  def applicant_identity_esia?(esia_data)
+    allowed = esia_data.nil?
+    response = allowed ? I18n.t('applicant_identity_esia?(esia_data).responses.esia_data_present') : I18n.t('agent?(applicant).responses.esia_data_not_present')
     format_result_methods_response(allowed, response)
   end
-
 end
