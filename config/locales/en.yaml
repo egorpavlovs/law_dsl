@@ -1,2 +1,6 @@
 en:
   физическое_лицо?(заявитель): natural_person?(applicant)
+  юридическое_лицо?(заявитель): legal_entity?(applicant)
+  индивидуальный_предприниматель?(заявитель): individual_entrepreneur?(applicant)
+  доверенное_лицо?(заявитель): agent?(applicant)
+  личность_заявителя_есиа?(данные_есиа): applicant_identity?(esia_data)

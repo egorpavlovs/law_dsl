@@ -7,3 +7,31 @@ ru:
     responses:
       allowed: Является физическим лицом
       not_allowed: Не является физическим лицом
+  legal_entity?(applicant):
+    name_ru: юридическое_лицо?(заявитель)
+    rigth_data:
+      - юридическое лицо
+      - юр лицо
+    responses:
+      allowed: Является юридическим лицом
+      not_allowed: Не является юридическим лицом
+  individual_entrepreneur?(applicant):
+    name_ru: индивидуальный_предприниматель?(заявитель)
+    rigth_data:
+      - индивидуальный предприниматель
+      - ип
+    responses:
+      allowed: Является индивидуальным предпринимателем
+      not_allowed: Не является индивидуальным предпринимателем
+  agent?(applicant):
+    name_ru: доверенное_лицо?(заявитель)
+    rigth_data:
+      - представитель
+    responses:
+      allowed: Является ипредставителем
+      not_allowed: Не является представителем
+  applicant_identity_esia?(esia_data):
+    name_ru: личность_заявителя_есиа?(данные_есиа)
+    responses:
+      esia_data_present: Является ипредставителем
+      esia_data_not_present: Не является представителем
