@@ -1,17 +1,8 @@
 module DocumentsMethods
-  #все электронное
-  # def бумажное_заявление_сни?(statement)
-  #   # TODO: Запрос на наличине заявление СНИ - statement['номер']
-  #   allowed = statement['тип'] == "бумажное"
-  #   response = allowed ? allowed : "Бумажное заявление не подано"
-  #   format_result_methods_response(allowed, response)
-  # end
 
-  def электронное_заявление_сни?(statement)
-# Если сюда пришли данные, то заявление уже подано, проверять не надо
-    # TODO: Запрос на наличине заявление СНИ - statement['номер']
-    allowed = statement['тип'] == "бумажное"
-    response = allowed ? allowed : "Электронное заявление не подано"
+  def statement_sni_filed?(statement_sni)
+    allowed = !statement_sni.nil?
+    response = allowed ? I18n.t('statement_sni_filed?(statement_sni).responses.statement_sni_present') : I18n.t('statement_sni_filed?(statement_sni).responses.statement_sni_present_not_present')
     format_result_methods_response(allowed, response)
   end
 

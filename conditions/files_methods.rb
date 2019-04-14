@@ -1,20 +1,20 @@
 module FilesMethods
 
-  def photos_initial_situation_presented?(fotos)
+  def photos_initial_situation_presented?(photos_initial_situation)
     allowed = !fotos.empty?
-    response = allowed ? I18n.t('photos_initial_situation_presented?(fotos).responses.fotos_present') : I18n.t('photos_initial_situation_presented?(fotos).responses.fotos_not_present')
+    response = allowed ? I18n.t('photos_initial_situation_presented?(photos_initial_situation).responses.fotos_present') : I18n.t('photos_initial_situation_presented?(photos_initial_situation).responses.fotos_not_present')
     format_result_methods_response(allowed, response)
   end
 
-  def situational_plan_presented?(plan)
+  def situational_plan_presented?(situational_plan)
     allowed = !plan.nil?
     response = allowed ? I18n.t('situational_plan_presented?(plan).responses.plan_present') : I18n.t('situational_plan_presented?(plan).responses.plan_not_present')
     format_result_methods_response(allowed, response)
   end
 
-  def photos_projected_constructions_presented?(fotos)
+  def photos_projected_constructions_presented?(images_projected_constructions)
     allowed = !fotos.empty?
-    response = allowed ? I18n.t('photos_projected_constructions_presented?(fotos).responses.fotos_present') : I18n.t('photos_projected_constructions_presented?(fotos).responses.fotos_not_present')
+    response = allowed ? I18n.t('photos_projected_constructions_presented?(images_projected_constructions).responses.fotos_present') : I18n.t('photos_projected_constructions_presented?(images_projected_constructions).responses.fotos_not_present')
     format_result_methods_response(allowed, response)
   end
 
