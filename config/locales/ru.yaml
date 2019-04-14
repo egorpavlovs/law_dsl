@@ -40,18 +40,23 @@ ru:
     responses:
       project_number_present: Проект согласован
       project_number_not_present: Проект не согласован
-  photos_initial_situation_presented?(fotos):
-    name_ru: фотофиксация_исходной_ситуации_представлена?(фотографии)
+  photos_initial_situation_presented?(photos_initial_situation):
+    name_ru: фотофиксация_исходной_ситуации_представлена?(фотографии_исходной_ситуации)
     responses:
       fotos_present: Фотофиксация исходной ситуации представлена
       fotos_not_present: Фотофиксация исходной ситуации не представлена
-  situational_plan_presented?(plan):
-    name_ru: ситуационный_план_представлен?(план)
+  situational_plan_presented?(situational_plan):
+    name_ru: ситуационный_план_представлен?(ситуационный_план)
     responses:
       plan_present: Ситуационный план представлен
       plan_not_present: Ситуационный план не представлен
-  photos_projected_constructions_presented?(fotos):
-    name_ru: изображения_проектируемых_конструкций_представлены?(фотографии)
+  photos_projected_constructions_presented?(images_projected_constructions):
+    name_ru: изображения_проектируемых_конструкций_представлены?(изображения_проектируемых_конструкций)
     responses:
       fotos_present: Изображения проектируемых конструкций представлены
       fotos_not_present: Изображения проектируемых конструкций не представлены
+  statement_sni_filed?(statement_sni):
+    name_ru: заявление_сни_подано?(заявление_сни)
+    responses:
+      statement_sni_present: Заявление СНИ подано
+      statement_sni_present_not_present: Заявление СНИ не подано
