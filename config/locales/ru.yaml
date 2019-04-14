@@ -1,0 +1,9 @@
+ru:
+  natural_person?(applicant):
+    name_ru: физическое_лицо?(заявитель)
+    rigth_data:
+      - физическое лицо
+      - физ лицо
+    responses:
+      allowed: Является физическим лицом
+      not_allowed: Не является физическим лицом

@@ -22,8 +22,8 @@ class DslOperand
       self
     elsif allowed && !operand.allowed
       operand
-    elsif !allowed && allowed
-      allowed
+    elsif !allowed && operand.allowed
+      self
     elsif !allowed && !allowed
       DslOperand.new(false, [self.response, operand.response].flatten)
     end

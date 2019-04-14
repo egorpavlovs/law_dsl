@@ -8,7 +8,7 @@ module ConditionsRelatives
 
 
   def проект_согласован?(project_number)
-    #Здесь должен быть запрос куда-то? Или сразу приходит ответ
+    #Здесь должен быть запрос куда-то? Или сразу приходит ответ - Приходит ответ, проверить он есть или нет
     allowed = !project_number.to_s.empty?
     response = allowed ? "Проект согласован" : "Проект не согласован"
     format_result_methods_response(allowed, response)

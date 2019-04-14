@@ -1,8 +1,8 @@
 module ApplicantMethods
   # include do
-  def физическое_лицо?(applicant)
-    allowed = ["физическое лицо", "физ лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется физическим лицом"
+  def natural_person?(applicant)
+    allowed = I18n.t('natural_person?(applicant).rigth_data').include?(applicant)
+    response = allowed ? I18n.t('natural_person?(applicant).responses.allowed') : I18n.t('natural_person?(applicant).responses.not_allowed')
     format_result_methods_response(allowed, response)
   end
 
@@ -24,15 +24,8 @@ module ApplicantMethods
     format_result_methods_response(allowed, response)
   end
 
-  def личность_заявителя_подтверждена_документ?(document_applicant)
-    # Должны быть уже подтвержденные бумажные документы?
-    p document_applicant
-    allowed = document_applicant.nil?
-    response = allowed ? "Личность заявителя не подтверждена" : allowed
-    format_result_methods_response(allowed, response)
-  end
-
   # TODO: Реализовать запросы для подверждения личности (узать как это делается на практике)
+  # Все уже подтверждено, проверить есть или нет
   def личность_заявителя_подтверждена_есиа?(document_applicant)
     allowed = document_applicant.nil?
     response = allowed ? "Личность заявителя не подтверждена, электронные реквизиты ЕСИА неправильные" : allowed
