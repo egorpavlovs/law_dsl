@@ -40,3 +40,18 @@ ru:
     responses:
       project_number_present: Проект согласован
       project_number_not_present: Проект не согласован
+  photos_initial_situation_presented?(fotos):
+    name_ru: фотофиксация_исходной_ситуации_представлена?(фотографии)
+    responses:
+      fotos_present: Фотофиксация исходной ситуации представлена
+      fotos_not_present: Фотофиксация исходной ситуации не представлена
+  situational_plan_presented?(plan):
+    name_ru: ситуационный_план_представлен?(план)
+    responses:
+      plan_present: Ситуационный план представлен
+      plan_not_present: Ситуационный план не представлен
+  photos_projected_constructions_presented?(fotos):
+    name_ru: изображения_проектируемых_конструкций_представлены?(фотографии)
+    responses:
+      fotos_present: Изображения проектируемых конструкций представлены
+      fotos_not_present: Изображения проектируемых конструкций не представлены

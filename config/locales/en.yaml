@@ -5,3 +5,8 @@ en:
   доверенное_лицо?(заявитель): agent?(applicant)
   личность_заявителя_есиа?(данные_есиа): applicant_identity?(esia_data)
   проект_согласован?(номер_проекта): project_agreed?(project_number)
+  фотофиксация_исходной_ситуации_представлена?(фотографии): photos_initial_situation_presented?(fotos)
+  ситуационный_план_представлен?(план): situational_plan_presented?(plan)
+  изображения_проектируемых_конструкций_представлены?(фотографии): photos_projected_constructions_presented?(fotos)
+  # TODO: узнаать как подставлять маштаб
+  топографический_план_с_маштабом_представлен?(топографический_план, ПОДСТАВЛЯЕМЫЙ МАШТАБ): photos_projected_constructions_presented?(fotos)
