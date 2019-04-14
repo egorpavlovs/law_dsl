@@ -7,11 +7,9 @@ module ConditionsRelatives
   include FilesMethods
 
 
-  def проект_согласован?(project_number)
-    #Здесь должен быть запрос куда-то? Или сразу приходит ответ - Приходит ответ, проверить он есть или нет
-    allowed = !project_number.to_s.empty?
-    response = allowed ? "Проект согласован" : "Проект не согласован"
+  def project_agreed?(project_number)
+    allowed = !project_number.nil?
+    response = allowed ? I18n.t('project_agreed?(project_number).responses.project_number_present') : I18n.t('project_agreed?(project_number).responses.project_number_not_present')
     format_result_methods_response(allowed, response)
   end
-
 end
