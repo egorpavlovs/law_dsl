@@ -7,7 +7,7 @@ class DslOperand
     @response = response.is_a?(Array) ? response : Array(response)
   end
 
-  def | (operand)
+  def or (operand)
     if allowed
       self
     elsif operand.allowed
@@ -17,7 +17,7 @@ class DslOperand
     end
   end
 
-  def & (operand)
+  def and (operand)
     if allowed && operand.allowed
       self
     elsif allowed && !operand.allowed
@@ -33,5 +33,7 @@ class DslOperand
     DslOperand.new(!allowed, response)
   end
 
+  alias_method :или,:or
+  alias_method :и,:and
 
 end
