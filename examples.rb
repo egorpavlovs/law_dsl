@@ -1,9 +1,12 @@
 require 'yaml'
 require_relative 'dsl'
 
+# x = Dsl.new({})
+# x.new_method(:mymeth) { puts "Это мой метод." }
+# x.mymeth # Печатается "Это мой метод."
 
 request = {
-  "applicant"=>"физическое лицо"
+  "applicant"=>"natural person"
 }
 scenario = 'scenarios/ru.test.md'
 p Dsl.make_decision(request, scenario)

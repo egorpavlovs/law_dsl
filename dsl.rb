@@ -1,26 +1,27 @@
 require_relative 'load_relatives'
-require "i18n"
+# require_relative 'lib/translate_service'
 
 class Dsl
   include LoadRelatives
 
   def self.make_decision(request_data, scenario)
     scenario_language = File.basename(scenario).split('.').first
-    # load default en and scenario language
-    I18n.load_path << File.expand_path("config/locales") + "/en.yaml"
-    I18n.load_path << File.expand_path("config/locales") + "/#{scenario_language}.yaml"
 
     dsl = Dsl.new(request_data)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
     results = lines.compact.map do |line|
       p line
-      eng_translate = I18n.t(line, :en)
-      p eng_translate
-      # set default_locale from scenario for methods with responses
-      I18n.default_locale = scenario_language.to_sym
-      dsl.instance_eval(eng_translate)
+      dsl.instance_eval(line)
     end
     dsl.join_scenario_results(results)
+  end
+
+  # def self.new_method(name, &block)
+  #   define_method(name, &block)
+  # end
+
+  def new_method(name, &block)
+    self.class.send(:define_method, name, &block)
   end
 
   def initialize(request_data)
@@ -42,6 +43,7 @@ class Dsl
   end
 
   def method_missing(m, *args, &block)
+    p ['m', m]
     m = @request_hash[m.to_s]
   end
 
