@@ -55,3 +55,32 @@ methods:
     responses:
       technical_inventory_documents_represented: "документы технической инвентаризации представлены"
       technical_inventory_documents_not_represented: "документы технической инвентаризации не представлены"
+  photos_initial_situation_presented?:
+    name: фотофиксация_исходной_ситуации_представлена?
+    args:
+      photos_initial_situation: фотографии_исходной_ситуации
+    responses:
+      photos_initial_situation_presented: "фотофиксация исходной ситуации представлена"
+      photos_initial_situation_not_presented: "фотофиксация исходной ситуации не представлена"
+  situational_plan_presented?:
+    name: ситуационный_план_представлен?
+    args:
+      photos_initial_situation: фотографии_исходной_ситуации
+    responses:
+      situational_plan_presented: "ситуационный план представлен"
+      situational_plan_not_presented: "ситуационный план не представлен"
+  photos_projected_constructions_presented?:
+    name: изображения_проектируемых_конструкций_представлены?
+    args:
+      photos_projected_constructions: изображения_проектируемых_конструкций
+    responses:
+      photos_projected_constructions_presented: "ситуационный план представлен"
+      photos_projected_constructions_not_presented: "ситуационный план не представлен"
+  topographic_plan_with_scale_presented?:
+    name: топографический_план_с_маштабом_представлен?
+    args:
+      topographic_plan_with_scale: топографический_план_с_маштабом
+    responses:
+      topographic_plan_with_scale_presented: "Топографический план представлен в подходящем формате"
+      topographic_plan_with_scale_not_presented: "Топографический план не представлен"
+      topographic_plan_with_wrong_scale_presented: Топографический план представлен в не подходящем формате

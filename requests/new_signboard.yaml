@@ -10,9 +10,9 @@ technical_inventory_documents:
 photos_initial_situation:
   - ссылка S3
   - ссылка S3
-топографический_план:
-  файл: ссылка S3
-  маштаб: 1:200
+topographic_plan_with_scale:
+  file: ссылка S3
+  scale: 1:200
 images_projected_constructions:
   - ссылка S3
   - ссылка S3
