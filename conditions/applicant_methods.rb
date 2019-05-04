@@ -1,9 +1,12 @@
 module ApplicantMethods
   # include do
-  def natural_person?(applicant)
-    method_name =__method__.to_s
-    yield(applicant) if block_given?
-    p ['applicant', applicant]
+  def natural_person?(arg, &block)
+    # В arg прилетает :заявитель, он как раз нужен для перевода его в applicant
+    applicant = block.call
+    # Здесь должен быть этот код из блока:
+    # method_name =__method__.to_s
+    # translate_arg = @translate_scenario.method_arg_from_value(method_name, arg.to_s)
+    # applicant =  @request_hash[translate_arg]
     allowed = applicant == "natural person"
     response = allowed? ? "natural_person" : "not_natural_person"
     format_result_methods_response(allowed, response)
