@@ -13,6 +13,7 @@ module TranslateAliases
   alias_method :ситуационный_план_представлен?, :situational_plan_presented?
   alias_method :изображения_проектируемых_конструкций_представлены?, :photos_projected_constructions_presented?
   alias_method :топографический_план_с_маштабом_представлен?, :topographic_plan_with_scale_presented?
+  alias_method :проект_согласован?, :project_agreed?
 
 
 end
