@@ -1,0 +1,18 @@
+---
+applicant: физик зат
+project_number: 123
+esia_data: 789
+situational_plan: ссылка S3
+statement_sni: ссылка S3
+technical_inventory_documents:
+  - name: бина планы
+    document: ссылка S3
+photos_initial_situation:
+  - ссылка S3
+  - ссылка S3
+topographic_plan_with_scale:
+  file: ссылка S3
+  scale: 1:200
+images_projected_constructions:
+  - ссылка S3
+  - ссылка S3
