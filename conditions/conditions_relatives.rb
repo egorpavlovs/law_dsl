@@ -7,9 +7,10 @@ module ConditionsRelatives
   include FilesMethods
 
 
-  def project_agreed?(project_number)
-    allowed = !project_number.nil?
-    response = allowed ? I18n.t('project_agreed?(project_number).responses.project_number_present') : I18n.t('project_agreed?(project_number).responses.project_number_not_present')
-    format_result_methods_response(allowed, response)
+  def project_agreed?(arg)
+    method_name =__method__.to_s
+    allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
+    response = allowed ? 'project_agreed' : 'project_not_agreed'
+    format_result_methods_response(method_name, allowed, response)
   end
 end
