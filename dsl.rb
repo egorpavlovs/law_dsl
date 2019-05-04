@@ -18,7 +18,6 @@ class Dsl
   def initialize(request_data, scenario_language)
     @request_hash = request_data
     @translate_scenario = TranslateService.new(scenario_language)
-    @result_hash = {}
   end
 
   def format_result_methods_response(method_name, allowed, response)
