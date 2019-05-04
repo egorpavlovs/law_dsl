@@ -9,7 +9,7 @@ class Dsl
     dsl = Dsl.new(request_data, scenario_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
     results = lines.compact.map do |line|
-      p line
+      # p line
       dsl.instance_eval line
     end
     dsl.join_scenario_results(results)

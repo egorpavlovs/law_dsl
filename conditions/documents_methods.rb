@@ -3,8 +3,9 @@ module DocumentsMethods
 
   def statement_sni_filed?(arg)
     method_name =__method__.to_s
+    get_data_for_method_arg(method_name, arg.to_s)
     allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
-    response = allowed ? statement_sni_filed : statement_sni_not_filed
+    response = allowed ? "statement_sni_filed" : "statement_sni_not_filed"
     format_result_methods_response(method_name, allowed, response)
   end
 

@@ -65,7 +65,7 @@ methods:
   situational_plan_presented?:
     name: ситуационный_план_представлен?
     args:
-      photos_initial_situation: фотографии_исходной_ситуации
+      situational_plan: ситуационный_план
     responses:
       situational_plan_presented: "ситуационный план представлен"
       situational_plan_not_presented: "ситуационный план не представлен"
