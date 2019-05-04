@@ -1,17 +1,22 @@
 require_relative 'load_relatives'
-# require_relative 'lib/translate_service'
+require_relative 'services/translate_service.rb'
 
 class Dsl
   include LoadRelatives
 
   def self.make_decision(request_data, scenario)
     scenario_language = File.basename(scenario).split('.').first
-
-    dsl = Dsl.new(request_data)
+    dsl = Dsl.new(request_data, scenario_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
     results = lines.compact.map do |line|
       p line
-      dsl.instance_eval(line)
+      dsl.instance_eval line
+      # do
+      #   # Этот блок надо передать в методы, которые работают из-за instance_eval
+      #   method_name =__method__.to_s
+      #   translate_arg = @translate_scenario.method_arg_from_value(method_name, arg.to_s)
+      #   @request_hash[translate_arg]
+      # end
     end
     dsl.join_scenario_results(results)
   end
@@ -20,12 +25,13 @@ class Dsl
   #   define_method(name, &block)
   # end
 
-  def new_method(name, &block)
-    self.class.send(:define_method, name, &block)
-  end
+  # def new_method(name, &block)
+  #   self.class.send(:define_method, name, &block)
+  # end
 
-  def initialize(request_data)
+  def initialize(request_data, scenario_language)
     @request_hash = request_data
+    @translate_scenario = TranslateService.new(scenario_language)
   end
 
   def format_result_methods_response(allowed, response = nil)
@@ -43,8 +49,9 @@ class Dsl
   end
 
   def method_missing(m, *args, &block)
-    p ['m', m]
-    m = @request_hash[m.to_s]
+    # m = @request_hash[m.to_s]
+
+    m
   end
 
 end
