@@ -15,14 +15,6 @@ class Dsl
     dsl.join_scenario_results(results)
   end
 
-  # def self.new_method(name, &block)
-  #   define_method(name, &block)
-  # end
-
-  # def new_method(name, &block)
-  #   self.class.send(:define_method, name, &block)
-  # end
-
   def initialize(request_data, scenario_language)
     @request_hash = request_data
     @translate_scenario = TranslateService.new(scenario_language)
@@ -36,7 +28,7 @@ class Dsl
   def join_scenario_results(dsl_operands)
     reject_dsl_operands = dsl_operands.map { |dsl_operand| dsl_operand unless dsl_operand.allowed }.compact
 
-    response = if reject_dsl_operands.empty?
+    responses = if reject_dsl_operands.empty?
       dsl_operands.map do |dsl_operand|
         get_responses(dsl_operand)
       end
@@ -48,7 +40,7 @@ class Dsl
 
     {
       "allowed"=>reject_dsl_operands.empty?,
-      "response"=>response.flatten
+      "responses"=>responses.flatten
     }
   end
 
