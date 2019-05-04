@@ -4,17 +4,17 @@ methods:
     args:
       applicant: заявитель
     responses:
-      natural_person: "физическое_лицо"
+      natural_person: "физическое лицо"
       not_natural_person: "не физическое лицо"
   legal_entity?:
     name: юридическое_лицо?
     args:
       applicant: заявитель
     responses:
-      legal_entity: "юридическое_лицо"
+      legal_entity: "юридическое лицо"
       not_legal_entity: "не юридическое лицо"
   individual_entrepreneur?:
-    name: индивидуальный предприниматель?
+    name: индивидуальный_предприниматель?
     args:
       applicant: заявитель
     responses:
