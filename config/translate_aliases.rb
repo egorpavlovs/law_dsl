@@ -9,6 +9,10 @@ module TranslateAliases
   alias_method :личность_подтверждена_через_есиа?, :applicant_identity_esia?
   alias_method :документы_технической_инвентаризации_представлены?, :technical_inventory_documents_represented?
   alias_method :электронное_заявление_сни_подано?, :statement_sni_filed?
+  alias_method :фотофиксация_исходной_ситуации_представлена?, :photos_initial_situation_presented?
+  alias_method :ситуационный_план_представлен?, :situational_plan_presented?
+  alias_method :изображения_проектируемых_конструкций_представлены?, :photos_projected_constructions_presented?
+  alias_method :топографический_план_с_маштабом_представлен?, :topographic_plan_with_scale_presented?
 
 
 end

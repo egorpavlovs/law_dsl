@@ -1,49 +1,41 @@
 require_relative 'application_methods'
 module FilesMethods
 
-  def photos_initial_situation_presented?(photos_initial_situation)
-    allowed = !fotos.empty?
-    response = allowed ? I18n.t('photos_initial_situation_presented?(photos_initial_situation).responses.fotos_present') : I18n.t('photos_initial_situation_presented?(photos_initial_situation).responses.fotos_not_present')
-    format_result_methods_response(allowed, response)
+  def photos_initial_situation_presented?(arg)
+    method_name =__method__.to_s
+    allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
+    response = allowed ? "photos_initial_situation_presented" : "photos_initial_situation_presented"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def situational_plan_presented?(situational_plan)
-    allowed = !plan.nil?
-    response = allowed ? I18n.t('situational_plan_presented?(plan).responses.plan_present') : I18n.t('situational_plan_presented?(plan).responses.plan_not_present')
-    format_result_methods_response(allowed, response)
+  def situational_plan_presented?(arg)
+    method_name =__method__.to_s
+    allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
+    response = allowed ? "situational_plan_presented" : "situational_plan_not_presented"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def photos_projected_constructions_presented?(images_projected_constructions)
-    allowed = !fotos.empty?
-    response = allowed ? I18n.t('photos_projected_constructions_presented?(images_projected_constructions).responses.fotos_present') : I18n.t('photos_projected_constructions_presented?(images_projected_constructions).responses.fotos_not_present')
-    format_result_methods_response(allowed, response)
+  def photos_projected_constructions_presented?(arg)
+    method_name =__method__.to_s
+    allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
+    response = allowed ? 'photos_projected_constructions_presented' : 'photos_projected_constructions_not_presented'
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def топографический_план_с_маштабом_представлен?(plan, scale)
-    if plan['файл'].nil?
+  def topographic_plan_with_scale_presented?(arg, scale)
+    method_name =__method__.to_s
+    plan = get_data_for_method_arg(method_name, arg.to_s)
+
+    if plan['file'].nil?
       allowed = false
-      response = "Топографический план не представлен"
-    elsif plan['маштаб'] != scale
+      response = "topographic_plan_with_scale_not_presented"
+    elsif plan['scale'] != scale
       allowed = false
-      response = "Топографический план представлен в не подходящем формате"
+      response = "topographic_plan_with_wrong_scale_presented"
     else
       allowed = true
-      response = "Топографический план представлен в подходящем формате"
+      response = "topographic_plan_with_scale_presented"
     end
-    format_result_methods_response(allowed, response)
-  end
-
-  def топографический_план_с_маштабом_представлен?(plan, scale)
-    if plan['файл'].nil?
-      allowed = false
-      response = "Топографический план не представлен"
-    elsif plan['маштаб'] != scale
-      allowed = false
-      response = "Топографический план представлен в не подходящем формате"
-    else
-      allowed = true
-      response = "Топографический план представлен в подходящем формате"
-    end
-    format_result_methods_response(allowed, response)
+    format_result_methods_response(method_name, allowed, response)
   end
 end
