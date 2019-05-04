@@ -1,3 +1,4 @@
+require_relative 'application_methods'
 module DocumentsMethods
 
   def statement_sni_filed?(statement_sni)
