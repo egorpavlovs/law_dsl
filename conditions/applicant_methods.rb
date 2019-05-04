@@ -31,7 +31,7 @@ module ApplicantMethods
     applicant = get_data_for_method_arg(method_name, arg.to_s)
     allowed = applicant == "agent"
     response = allowed ? "agent" : "not_agent"
-    format_result_methods_response(allowed, response)
+    format_result_methods_response(method_name, allowed, response)
   end
 
   def applicant_identity_esia?(arg)
@@ -39,6 +39,6 @@ module ApplicantMethods
     esia_data = get_data_for_method_arg(method_name, arg.to_s)
     allowed = !esia_data.nil?
     response = allowed ? "esia_data_present" : "esia_data_not_present"
-    format_result_methods_response(allowed, response)
+    format_result_methods_response(method_name, allowed, response)
   end
 end

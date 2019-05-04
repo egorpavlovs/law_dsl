@@ -6,7 +6,12 @@ require_relative 'dsl'
 # x.mymeth # Печатается "Это мой метод."
 
 request = {
-  "applicant"=>"natural person"
+  "technical_inventory_documents"=> [
+    {
+      "name"=> "план помещения",
+      "document"=> "ссылка S3"
+    }
+  ]
 }
 scenario = 'scenarios/ru.test.md'
 p Dsl.make_decision(request, scenario)

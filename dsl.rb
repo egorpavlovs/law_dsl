@@ -55,8 +55,7 @@ class Dsl
   end
 
   def method_missing(m, *args, &block)
-    # m = @request_hash[m.to_s]
-    m
+    m || @request_hash[m.to_s]
   end
 
 end
