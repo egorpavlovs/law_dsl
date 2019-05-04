@@ -1,3 +1,4 @@
+require_relative 'application_methods'
 module FilesMethods
 
   def photos_initial_situation_presented?(photos_initial_situation)

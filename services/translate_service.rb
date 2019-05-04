@@ -8,7 +8,7 @@ class TranslateService
 
   def from_key_path(path)
     keys = path.split('.')
-    res = @translate_config.dig(*%w(keys))
+    res = @translate_config.dig(*keys)
     if res.is_a?(Hash)
       raise "Dont completed path #{path} for translate"
     else
