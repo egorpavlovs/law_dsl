@@ -10,7 +10,7 @@ class DslOperand
     @method_name = method_name
   end
 
-  def or (operand)
+  def | (operand)
     if allowed
       self
     elsif operand.allowed
@@ -20,7 +20,7 @@ class DslOperand
     end
   end
 
-  def and (operand)
+  def & (operand)
     if allowed && operand.allowed
       self
     elsif allowed && !operand.allowed
@@ -36,7 +36,7 @@ class DslOperand
     DslOperand.new(!allowed, response, method_name)
   end
 
-  alias_method :или,:or
-  alias_method :и,:and
+  alias_method :или,:|
+  alias_method :и,:&
 
 end
