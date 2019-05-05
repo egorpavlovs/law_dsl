@@ -4,9 +4,9 @@ require_relative 'services/translate_service.rb'
 class Dsl
   include LoadRelatives
 
-  def self.make_decision(request_data, scenario)
+  def self.make_decision(request_data, scenario, response_language)
     scenario_language = File.basename(scenario).split('.').first
-    dsl = Dsl.new(request_data, scenario_language)
+    dsl = Dsl.new(request_data, scenario_language, response_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
     results = lines.compact.map do |line|
       # p line
@@ -15,9 +15,10 @@ class Dsl
     dsl.join_scenario_results(results)
   end
 
-  def initialize(request_data, scenario_language)
+  def initialize(request_data, scenario_language, response_language)
     @request_hash = request_data
     @translate_scenario = TranslateService.new(scenario_language)
+    @translate_response = TranslateService.new(response_language)
   end
 
   def format_result_methods_response(method_name, allowed, response)
@@ -45,7 +46,7 @@ class Dsl
 
   def get_responses(dsl_operand)
     if dsl_operand.response.is_a?(String)
-        @translate_scenario.from_key_path(["methods", dsl_operand.method_name, "responses", dsl_operand.response].join("."))
+        @translate_response.from_key_path(["methods", dsl_operand.method_name, "responses", dsl_operand.response].join("."))
     else
       dsl_operand.response.map{ |dsl_operand_response|
         get_responses(dsl_operand_response)
