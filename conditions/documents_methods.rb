@@ -1,30 +1,28 @@
+require_relative 'application_methods'
 module DocumentsMethods
-  def бумажное_заявление_сни?(statement)
-    # TODO: Запрос на наличине заявление СНИ - statement['номер']
-    allowed = statement['тип'] == "бумажное"
-    response = allowed ? allowed : "Бумажное заявление не подано"
-    format_result_methods_response(allowed, response)
+
+  def statement_sni_filed?(arg)
+    method_name =__method__.to_s
+    get_data_for_method_arg(method_name, arg.to_s)
+    allowed = !get_data_for_method_arg(method_name, arg.to_s).nil?
+    response = allowed ? "statement_sni_filed" : "statement_sni_not_filed"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def электронное_заявление_сни?(statement)
-    # TODO: Запрос на наличине заявление СНИ - statement['номер']
-    allowed = statement['тип'] == "бумажное"
-    response = allowed ? allowed : "Электронное заявление не подано"
-    format_result_methods_response(allowed, response)
-  end
-
-  def документы_технической_инвентаризации_представлены?(documents, documents_names)
+  def technical_inventory_documents_represented?(arg, documents_names)
+    method_name =__method__.to_s
+    documents = get_data_for_method_arg(method_name, arg.to_s)
     errors = documents_names.map do |document_name|
-      unless documents.map{|e| e['наименование'] unless e['документ'].to_s.empty?}.compact.include?(document_name)
+      unless documents.map{|e| e['name'] unless e['document'].to_s.empty?}.compact.include?(document_name)
         document_name
       end
     end
     allowed = errors.compact.empty?
     response = if allowed
-      "Необходимые документы технической инвентаризации присутствуют"
+      "technical_inventory_documents_represented"
     else
-      "Отсутствуют необходимые документы технической инвентаризации - #{errors.join(", ")}"
+      "technical_inventory_documents_not_represented"
     end
-    format_result_methods_response(allowed, response)
+    format_result_methods_response(method_name, allowed, response)
   end
 end

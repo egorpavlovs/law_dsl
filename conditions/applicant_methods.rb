@@ -1,42 +1,44 @@
+require_relative 'application_methods'
 module ApplicantMethods
-  # include do
-  def физическое_лицо?(applicant)
-    allowed = ["физическое лицо", "физ лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется физическим лицом"
-    format_result_methods_response(allowed, response)
+  include ApplicationMethods
+
+  def natural_person?(arg)
+    method_name =__method__.to_s
+    applicant = get_data_for_method_arg(method_name, arg.to_s)
+    allowed = applicant == "natural person"
+    response = allowed ? "natural_person" : "not_natural_person"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def юридическое_лицо?(applicant)
-    allowed = ["юридическое лицо", "юр лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется юридическим лицом"
-    format_result_methods_response(allowed, response)
+  def legal_entity?(arg)
+    method_name =__method__.to_s
+    applicant = get_data_for_method_arg(method_name, arg.to_s)
+    allowed = applicant == "legal person"
+    response = allowed ? "legal_entity" : "not_legal_entity"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def индивидуальный_предприниматель?(applicant)
-    allowed = ["индивидуальный предприниматель", "ип"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется индивидуальным предпринимателем"
-    format_result_methods_response(allowed, response)
+  def individual_entrepreneur?(arg)
+    method_name =__method__.to_s
+    applicant = get_data_for_method_arg(method_name, arg.to_s)
+    allowed = applicant == "individual entrepreneur"
+    response = allowed ? "individual_entrepreneur" : "not_individual_entrepreneur"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def доверенное_лицо?(applicant)
-    allowed = ["доверенное лицо"].include?(applicant)
-    response = allowed ? allowed : "Заявитель не явлется доверенным лицом"
-    format_result_methods_response(allowed, response)
+  def agent?(arg)
+    method_name =__method__.to_s
+    applicant = get_data_for_method_arg(method_name, arg.to_s)
+    allowed = applicant == "agent"
+    response = allowed ? "agent" : "not_agent"
+    format_result_methods_response(method_name, allowed, response)
   end
 
-  def личность_заявителя_подтверждена_документ?(document_applicant)
-    # Должны быть уже подтвержденные бумажные документы?
-    p document_applicant
-    allowed = document_applicant.nil?
-    response = allowed ? "Личность заявителя не подтверждена" : allowed
-    format_result_methods_response(allowed, response)
+  def applicant_identity_esia?(arg)
+    method_name =__method__.to_s
+    esia_data = get_data_for_method_arg(method_name, arg.to_s)
+    allowed = !esia_data.nil?
+    response = allowed ? "esia_data_present" : "esia_data_not_present"
+    format_result_methods_response(method_name, allowed, response)
   end
-
-  # TODO: Реализовать запросы для подверждения личности (узать как это делается на практике)
-  def личность_заявителя_подтверждена_есиа?(document_applicant)
-    allowed = document_applicant.nil?
-    response = allowed ? "Личность заявителя не подтверждена, электронные реквизиты ЕСИА неправильные" : allowed
-    format_result_methods_response(allowed, response)
-  end
-
 end

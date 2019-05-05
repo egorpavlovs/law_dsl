@@ -1,0 +1,86 @@
+methods:
+  natural_person?:
+    name: физическое_лицо?
+    args:
+      applicant: заявитель
+    responses:
+      natural_person: "физическое лицо"
+      not_natural_person: "не физическое лицо"
+  legal_entity?:
+    name: юридическое_лицо?
+    args:
+      applicant: заявитель
+    responses:
+      legal_entity: "юридическое лицо"
+      not_legal_entity: "не юридическое лицо"
+  individual_entrepreneur?:
+    name: индивидуальный_предприниматель?
+    args:
+      applicant: заявитель
+    responses:
+      individual_entrepreneur: "индивидуальный предприниматель"
+      not_individual_entrepreneur: "не индивидуальный предприниматель"
+  agent?:
+    name: представитель?
+    args:
+      applicant: заявитель
+    responses:
+      agent: "представитель"
+      not_agent: "не представитель"
+  applicant_identity_esia?:
+    name: личность_подтверждена_через_есиа?
+    args:
+      esia_data: реквизиты_есиа_заявителя
+    responses:
+      esia_data_present: "личность заявителя подтверждена через есиа"
+      esia_data_not_present: "личность заявителя не подтверждена через есиа"
+  project_agreed?:
+    name: проект_согласован?
+    args:
+      project_number: номер_проекта
+    responses:
+      project_agreed: "проект согласован"
+      project_not_agreed: "проект не согласован"
+  statement_sni_filed?:
+    name: электронное_заявление_сни_подано?
+    args:
+      statement_sni: заявление_сни
+    responses:
+      statement_sni_filed: "электронное заявление сни подано"
+      statement_sni_not_filed: "электронное заявление сни не подано"
+  technical_inventory_documents_represented?:
+    name: документы_технической_инвентаризации_представлены?
+    args:
+      technical_inventory_documents: документы_технической_инвентаризации
+    responses:
+      technical_inventory_documents_represented: "документы технической инвентаризации представлены"
+      technical_inventory_documents_not_represented: "документы технической инвентаризации не представлены"
+  photos_initial_situation_presented?:
+    name: фотофиксация_исходной_ситуации_представлена?
+    args:
+      photos_initial_situation: фотографии_исходной_ситуации
+    responses:
+      photos_initial_situation_presented: "фотофиксация исходной ситуации представлена"
+      photos_initial_situation_not_presented: "фотофиксация исходной ситуации не представлена"
+  situational_plan_presented?:
+    name: ситуационный_план_представлен?
+    args:
+      situational_plan: ситуационный_план
+    responses:
+      situational_plan_presented: "ситуационный план представлен"
+      situational_plan_not_presented: "ситуационный план не представлен"
+  photos_projected_constructions_presented?:
+    name: изображения_проектируемых_конструкций_представлены?
+    args:
+      photos_projected_constructions: изображения_проектируемых_конструкций
+    responses:
+      photos_projected_constructions_presented: "ситуационный план представлен"
+      photos_projected_constructions_not_presented: "ситуационный план не представлен"
+  topographic_plan_with_scale_presented?:
+    name: топографический_план_с_маштабом_представлен?
+    args:
+      topographic_plan_with_scale: топографический_план_с_маштабом
+    responses:
+      topographic_plan_with_scale_presented: "Топографический план представлен в подходящем формате"
+      topographic_plan_with_scale_not_presented: "Топографический план не представлен"
+      topographic_plan_with_wrong_scale_presented: Топографический план представлен в не подходящем формате
