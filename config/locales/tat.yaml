@@ -4,78 +4,78 @@ methods:
     args:
       applicant: гариза_бирүче
     responses:
-      natural_person: "физик зат"
-      not_natural_person: "физик зат түгел"
+      natural_person: "Гариза бирүче булып тора физик зат"
+      not_natural_person: "Гариза бирүче булып тормый физик зат"
   legal_entity?:
     name: юридик_зат?
     args:
       applicant: гариза_бирүче
     responses:
-      legal_entity: "юридик зат"
-      not_legal_entity: "юридик зат түгел"
+      legal_entity: "Мөрәҗәгать итүче юридик зат булып тора"
+      not_legal_entity: "Гариза бирүче түгел юридик зат"
   individual_entrepreneur?:
     name: шәхси_эшмәкәр?
     args:
       applicant: гариза_бирүче
     responses:
-      individual_entrepreneur: "шәхси эшмәкәр"
-      not_individual_entrepreneur: "шәхси эшмәкәр түгел"
+      individual_entrepreneur: "Гариза бирүче шәхси эшмәкәр булып тора"
+      not_individual_entrepreneur: "Гариза бирүче шәхси эшмәкәр булып тормый"
   agent?:
     name: вәкил?
     args:
       applicant: гариза_бирүче
     responses:
-      agent: "вәкил"
-      not_agent: "вәкил түгел"
+      agent: "Гариза бирүче вәкиле булып тора вәкиле"
+      not_agent: "Гариза бирүче түгел вәкиле"
   applicant_identity_esia?:
     name: шәхес_раслау_аша_есиа?
     args:
       esia_data: мөрәҗәгать_итүче_есиа_реквизитлары
     responses:
-      esia_data_present: "шәхес раслау аша есиа"
-      esia_data_not_present: "шәхес түгел раслау аша есиа"
+      esia_data_present: "Шәхес гариза бирүче подтверждена аша есиа"
+      esia_data_not_present: "Шәхес гариза бирүче түгел подтверждена аша есиа"
   project_agreed?:
     name: проект_килештерелгән?
     args:
       project_number: проектның_номеры
     responses:
-      project_agreed: "проект килешенгән"
-      project_not_agreed: "проект килештерелмәгән"
+      project_agreed: "Әлеге проект килештерелгән"
+      project_not_agreed: "Әлеге проект килештерелмәгән"
   statement_sni_filed?:
     name: сни_электрон_гаризасы_бирелдеме?
     args:
       statement_sni: гариза_сни
     responses:
-      statement_sni_filed: "эсни электрон гаризасы бирелде"
-      statement_sni_not_filed: "сни электрон гариза бирелмәгән"
+      statement_sni_filed: "Сни электрон гаризасы бирелде"
+      statement_sni_not_filed: "Сни электрон гариза бирелмәгән"
   technical_inventory_documents_represented?:
     name: техник_инвентаризация_документлары_бармы?
     args:
       technical_inventory_documents: техник_инвентаризация_документлары
     responses:
-      technical_inventory_documents_represented: "техник инвентаризация документлары тәкъдим ителде"
-      technical_inventory_documents_not_represented: "техник инвентаризация документлары тәкъдим ителмәгән"
+      technical_inventory_documents_represented: "Техник инвентаризация документлары тәкъдим ителде"
+      technical_inventory_documents_not_represented: "Техник инвентаризация документлары тәкъдим ителмәгән"
   photos_initial_situation_presented?:
     name: башлангыч_ситуацияне_фотофиксацияләү_тәкъдим_ителде?
     args:
       photos_initial_situation: фоторәсемнәр_башлангыч_хәлне
     responses:
-      photos_initial_situation_presented: "башлангыч ситуацияне фотофиксацияләү тәкъдим ителде"
-      photos_initial_situation_not_presented: "башлангыч ситуацияне фотофиксацияләү тәкъдим ителми"
+      photos_initial_situation_presented: "Башлангыч ситуацияне фотофиксацияләү тәкъдим ителде"
+      photos_initial_situation_not_presented: "Башлангыч ситуацияне фотофиксацияләү тәкъдим ителми"
   situational_plan_presented?:
     name: ситуационный_планы_тәкъдим_ителде?
     args:
       situational_plan: ситуационный_планы
     responses:
-      situational_plan_presented: "ситуацион план тәкъдим ителде"
-      situational_plan_not_presented: "ситуационный планы тәкъдим ителмәгән"
+      situational_plan_presented: "Ситуацион план тәкъдим ителде"
+      situational_plan_not_presented: "Ситуационный планы тәкъдим ителмәгән"
   photos_projected_constructions_presented?:
     name: проектлана_торган_конструкцияләр_сурәтләре_тәкъдим_ителгән?
     args:
       photos_projected_constructions: проектлана_торган_конструкцияләр_сурәтләре
     responses:
-      photos_projected_constructions_presented: "проектлана торган конструкцияләр сурәтләре тәкъдим ителгән"
-      photos_projected_constructions_not_presented: "проектлана торган конструкцияләр сурәтләре тәкъдим ителмәгән"
+      photos_projected_constructions_presented: "Проектлана торган конструкцияләр сурәтләре тәкъдим ителгән"
+      photos_projected_constructions_not_presented: "Проектлана торган конструкцияләр сурәтләре тәкъдим ителмәгән"
   topographic_plan_with_scale_presented?:
     name: маштаб_белән_топографик_план_тәкъдим_ителгән?
     args:
