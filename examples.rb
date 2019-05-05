@@ -23,7 +23,7 @@ require_relative 'dsl'
 # scenario = 'scenarios/tat.test.md'
 # p Dsl.make_decision(request, scenario, 'ru')
 
-scenario = 'scenarios/tat.new_signboard.md'
-request_file_name = 'requests/tat.new_signboard.yaml'
-request =YAML::load(File.open(request_file_name))
+scenario = 'scenarios/ru.new_signboard.md'
+request_file_name = 'requests/ru.new_signboard.yaml'
+pp request =YAML::load(File.open(request_file_name))
 p Dsl.make_decision(request, scenario, 'ru')
