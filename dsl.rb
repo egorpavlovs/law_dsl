@@ -8,7 +8,9 @@ class Dsl
     scenario_language = File.basename(scenario).split('.').first
     dsl = Dsl.new(request_data, scenario_language, response_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
+    # p self.ancestors
     results = lines.compact.map do |line|
+    # p self.methods
       # p line
       dsl.instance_eval line
     end
@@ -19,6 +21,11 @@ class Dsl
     @request_hash = request_data
     @translate_scenario = TranslateService.new(scenario_language)
     @translate_response = TranslateService.new(response_language)
+    method_names_with_translates = @translate_scenario.get_method_names_with_translate()
+    method_names_with_translates.each do |method_name, method_name_translate|
+      # self.alias_method method_name_translate.to_sym, method_name.to_sym
+      self.singleton_class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
+    end
   end
 
   def format_result_methods_response(method_name, allowed, response)
@@ -55,6 +62,8 @@ class Dsl
   end
 
   def method_missing(m, *args, &block)
+    # p self.methods
+    # p 'm'
     m || @request_hash[m.to_s]
   end
 

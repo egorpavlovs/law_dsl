@@ -17,13 +17,23 @@ class TranslateService
   end
 
   def method_arg_from_value(method_name, value)
-    agrs_cshema = @translate_config.dig(*%W(methods #{method_name} args))
-    res = invert_schema(agrs_cshema).dig(value).flatten.first
+    agrs_schema = @translate_config.dig(*%W(methods #{method_name} args))
+    res = invert_schema(agrs_schema).dig(value).flatten.first
     if res.empty?
       raise "Not find #{value} in #{method_name}"
     else
       res
     end
+  end
+
+  def get_method_names_with_translate()
+    res = {}
+    @translate_config['methods'].keys.each do |method_name|
+      res.merge!({
+        method_name => @translate_config.dig(*%W(methods #{method_name} name)).to_s
+      })
+    end
+    res
   end
 
   def invert_schema(h, arr=[])
