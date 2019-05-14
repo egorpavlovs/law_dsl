@@ -23,9 +23,16 @@ class Dsl
     @translate_response = TranslateService.new(response_language)
     method_names_with_translates = @translate_scenario.get_method_names_with_translate()
     method_names_with_translates.each do |method_name, method_name_translate|
-      # self.alias_method method_name_translate.to_sym, method_name.to_sym
-      self.singleton_class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
+      self.class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
     end
+    args_with_translate = @translate_scenario.get_args_with_translate()
+    args_with_translate.each do |arg, translate|
+      create_method(translate.to_sym) { eval(arg) }
+    end
+  end
+
+  def create_method(name, &block)
+    self.class.send(:define_method, name, &block)
   end
 
   def format_result_methods_response(method_name, allowed, response)
@@ -64,7 +71,7 @@ class Dsl
   def method_missing(m, *args, &block)
     # p self.methods
     # p 'm'
-    m || @request_hash[m.to_s]
+    @request_hash[m.to_s]
   end
 
 end
