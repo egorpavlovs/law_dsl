@@ -28,6 +28,7 @@ class Dsl
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translate|
       create_method(translate.to_sym) { @request_hash[arg] }
+      create_method(arg.to_sym) { @request_hash[arg] }
     end
   end
 

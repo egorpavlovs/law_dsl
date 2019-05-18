@@ -11,7 +11,7 @@ module ApplicantMethods
 
   def legal_entity?(*args)
     method_name =__method__.to_s
-    allowed = args.first == "legal person"
+    allowed = args.first == "legal entity"
     response = allowed ? "legal_entity" : "not_legal_entity"
     format_result_methods_response(method_name, allowed, response)
   end
