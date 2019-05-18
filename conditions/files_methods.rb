@@ -23,7 +23,6 @@ module FilesMethods
   end
 
   def topographic_plan_with_scale_presented?(*args)
-    p ['args', args]
     method_name =__method__.to_s
     plan = args.first
     scale = args.last
