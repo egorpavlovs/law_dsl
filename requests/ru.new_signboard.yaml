@@ -2,7 +2,7 @@
 applicant: natural person
 project_number: 123
 esia_data: 789
-situational_plan:
+situational_plan: https://example.com/1
 statement_sni: https://example.com/2
 technical_inventory_documents:
   - name: план помещения
