@@ -27,7 +27,7 @@ class Dsl
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translate|
-      create_method(translate.to_sym) { eval(arg) }
+      create_method(translate.to_sym) { @request_hash[arg] }
     end
   end
 
@@ -67,11 +67,4 @@ class Dsl
       }
     end
   end
-
-  def method_missing(m, *args, &block)
-    # p self.methods
-    # p 'm'
-    @request_hash[m.to_s]
-  end
-
 end

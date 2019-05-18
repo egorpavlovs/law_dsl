@@ -36,6 +36,18 @@ class TranslateService
     res
   end
 
+  def get_args_with_translate()
+    res = {}
+    @translate_config['methods'].keys.each do |method_name|
+      @translate_config.dig(*%W(methods #{method_name} args)).each do |arg, translate|
+        res.merge!({
+          arg => translate.to_s
+        })
+      end
+    end
+    res
+  end
+
   def invert_schema(h, arr=[])
     h.each_with_object({}) { |(k,v),g| g.update((v.is_a?(Hash)) ? invert_schema(v, arr + [k]) : { v=>[arr+[k]] }) { |_,o,n| o+n } }
   end
