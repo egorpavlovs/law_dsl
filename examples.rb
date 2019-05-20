@@ -1,4 +1,5 @@
 require 'yaml'
+require 'json'
 require_relative 'dsl'
 
 # request = {
@@ -27,7 +28,12 @@ require_relative 'dsl'
 
 # p Dsl.make_decision(request, scenario, 'ru')
 
-scenario = 'scenarios/new_signboard/ru.new_signboard.md'
-request_file_name = 'requests/ru.new_signboard.yaml'
-request =YAML::load(File.open(request_file_name))
+# scenario = 'scenarios/new_signboard/ru.new_signboard.md'
+# request_file_name = 'requests/ru.new_signboard.yaml'
+# request =YAML::load(File.open(request_file_name))
+# p Dsl.make_decision(request, scenario, 'ru')
+
+scenario = 'scenarios/ru.egrul.md'
+request_file_name = 'requests/queries/ispolkom_egrul.json'
+request =JSON.parse(File.read(request_file_name))
 p Dsl.make_decision(request, scenario, 'ru')

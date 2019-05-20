@@ -53,6 +53,14 @@ class Dsl
     DslOperand.new(allowed, response, method_name)
   end
 
+  def combine_dsl_operands(dsl_operands)
+    res = dsl_operands.first
+    for i in 1..dsl_operands.size-2
+      res = res.&(dsl_operands[i+1])
+    end
+    res
+  end
+
   def join_scenario_results(dsl_operands)
     reject_dsl_operands = dsl_operands.map { |dsl_operand| dsl_operand unless dsl_operand.allowed }.compact
 
@@ -66,12 +74,10 @@ class Dsl
       end
     end
 
-    # {
-    #   "allowed"=>reject_dsl_operands.empty?,
-    #   "responses"=>responses.flatten
-    # }
-    DslOperand.new(reject_dsl_operands.empty?, responses.flatten, nil)
-
+    {
+      "allowed"=>reject_dsl_operands.empty?,
+      "responses"=>responses.flatten
+    }
   end
 
   def get_responses(dsl_operand)

@@ -89,8 +89,8 @@ methods:
     args:
       egrul_query_result: результат_запроса_в_егрюл
     responses:
-      information_from_egrul_represented: "Результат запроса из ЕГРЮЛ предоставлен"
-      information_from_egrul_not_represented: "Результат запроса из ЕГРЮЛ не предоставлен"
+      information_from_egrul_present: "Результат запроса из ЕГРЮЛ предоставлен"
+      information_from_egrul_not_present: "Результат запроса из ЕГРЮЛ не предоставлен"
   egrul_id_document_represented?:
     args:
       # ИдДок: идентификационный_номер_документа_егрюл

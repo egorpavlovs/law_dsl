@@ -10,7 +10,6 @@ RSpec.describe ApplicantMethods do
 
   def check_allowed(dsl, method_name, field_name)
     allowed = dsl.send(method_name, dsl.send(field_name)).allowed
-
     expect(allowed).to be true
   end
 end
