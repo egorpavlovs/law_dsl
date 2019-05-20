@@ -17,23 +17,36 @@ class Dsl
     dsl.join_scenario_results(results)
   end
 
+  attr_reader :scenario_language
+  attr_reader :response_language
+
   def initialize(request_data, scenario_language, response_language)
     @request_hash = request_data
+    @scenario_language = scenario_language
+    @response_language = response_language
     @translate_scenario = TranslateService.new(scenario_language)
     @translate_response = TranslateService.new(response_language)
+
     method_names_with_translates = @translate_scenario.get_method_names_with_translate()
     method_names_with_translates.each do |method_name, method_name_translate|
       self.class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translate|
-      create_method(translate.to_sym) { @request_hash[arg] }
-      create_method(arg.to_sym) { @request_hash[arg] }
+      res = @request_hash[arg]
+      create_method(arg.to_sym) { res }
+      # p ['dsl1', arg, self.send(arg.to_sym)]
+      # p ['req', @request_hash[arg]]
+      # self.class.send(:alias_method, translate.to_sym, arg.to_sym)
+      create_method(translate.to_sym) { res }
+      # p ['dsl2', translate, self.send(translate.to_sym)]
+      # create_method(translate.to_sym) { self.send(arg.to_sym) }
+      # p [translate, self.send(translate.to_sym)]
     end
   end
 
   def create_method(name, &block)
-    self.class.send(:define_method, name, &block)
+    self.send(:define_singleton_method, name, &block)
   end
 
   def format_result_methods_response(method_name, allowed, response)
@@ -53,10 +66,12 @@ class Dsl
       end
     end
 
-    {
-      "allowed"=>reject_dsl_operands.empty?,
-      "responses"=>responses.flatten
-    }
+    # {
+    #   "allowed"=>reject_dsl_operands.empty?,
+    #   "responses"=>responses.flatten
+    # }
+    DslOperand.new(reject_dsl_operands.empty?, responses.flatten, nil)
+
   end
 
   def get_responses(dsl_operand)

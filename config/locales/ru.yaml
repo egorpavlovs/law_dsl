@@ -84,3 +84,25 @@ methods:
       topographic_plan_with_scale_presented: "Топографический план представлен в подходящем формате"
       topographic_plan_with_scale_not_presented: "Топографический план не представлен"
       topographic_plan_with_wrong_scale_presented: Топографический план представлен в не подходящем формате
+  information_from_egrul_represented?:
+    name: информацция_из_егрюл_представлена?
+    args:
+      egrul_query_result: результат_запроса_в_егрюл
+    responses:
+      information_from_egrul_represented: "Результат запроса из ЕГРЮЛ предоставлен"
+      information_from_egrul_not_represented: "Результат запроса из ЕГРЮЛ не предоставлен"
+  egrul_id_document_represented?:
+    args:
+      # ИдДок: идентификационный_номер_документа_егрюл
+      # egrul_id_document: идентификационный_номер_документа_егрюл
+      ИдДок: egrul_id_document
+    responses:
+      id_document_present: "Идентификационный номер документа из ЕГРЮЛ представлен"
+      id_document_not_present: "Идентификационный номер документа из ЕГРЮЛ не представлен"
+  egrul_legal_entity_information_represented?:
+    args:
+      # СвЮЛ: сведения_юридического_лица_егрюл
+      СвЮЛ: egrul_legal_entity_information
+    responses:
+      egrul_legal_entity_information_present: "Сведения о юридическом лице из ЕГРЮЛ представлены"
+      egrul_legal_entity_information_not_present: "Сведения о юридическом лице из ЕГРЮЛ не представлены"

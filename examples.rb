@@ -7,23 +7,27 @@ require_relative 'dsl'
 #     "scale" => "1:200"
 #   }
 # }
-# scenario = 'scenarios/ru.test.md'
+# scenario = 'scenarios/test/ru.test.md'
 # p Dsl.make_decision(request, scenario, 'ru')
 
 
-# scenario = 'scenarios/ru.new_signboard.md'
+# scenario = 'scenarios/new_signboard/ru.new_signboard.md'
 # request_file_name = 'requests/ru.new_signboard.yaml'
 # request =YAML::load(File.open(request_file_name))
 # p Dsl.make_decision(request, scenario, 'ru')
 
 
 # request = {
-#   "applicant" => "natural person"
+#   "topographic_plan_with_scale" => {
+#     "file" => 'https://example.com/6',
+#     "scale" => '1:200'
+#   }
 # }
-# scenario = 'scenarios/tat.test.md'
+# scenario = 'scenarios/test/ru.test.md'
+
 # p Dsl.make_decision(request, scenario, 'ru')
 
-scenario = 'scenarios/ru.new_signboard.md'
+scenario = 'scenarios/new_signboard/ru.new_signboard.md'
 request_file_name = 'requests/ru.new_signboard.yaml'
-pp request =YAML::load(File.open(request_file_name))
+request =YAML::load(File.open(request_file_name))
 p Dsl.make_decision(request, scenario, 'ru')
