@@ -93,6 +93,9 @@ methods:
       information_from_egrul_not_present: "Результат запроса из ЕГРЮЛ не предоставлен"
   egrul_id_document_represented?:
     args:
+      # ИдДок:
+      #   - идентификационный_номер_документа_егрюл
+      #   - egrul_id_document
       # ИдДок: идентификационный_номер_документа_егрюл
       # egrul_id_document: идентификационный_номер_документа_егрюл
       ИдДок: egrul_id_document
