@@ -27,22 +27,25 @@ class Dsl
     @translate_scenario = TranslateService.new(scenario_language)
     @translate_response = TranslateService.new(response_language)
 
+    #переписать покороче и покрасивее создание алиасов и методов
     method_names_with_translates = @translate_scenario.get_method_names_with_translate()
     method_names_with_translates.each do |method_name, method_name_translate|
       self.class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translate|
+      # убрать этот костыль и добавить массив для всех в ru.yaml
+      translates = [translate].flatten
       res = @request_hash[arg]
       create_method(arg.to_sym) { res }
-      # p ['dsl1', arg, self.send(arg.to_sym)]
-      # p ['req', @request_hash[arg]]
-      # self.class.send(:alias_method, translate.to_sym, arg.to_sym)
-      create_method(translate.to_sym) { res }
-      # p ['dsl2', translate, self.send(translate.to_sym)]
-      # create_method(translate.to_sym) { self.send(arg.to_sym) }
-      # p [translate, self.send(translate.to_sym)]
+      translates.each{ |translate_arg| create_method(translate_arg.to_sym) { res } }
     end
+    scenarios_with_translate = @translate_scenario.get_scenarios_with_translate()
+    scenarios_with_translate.each do |scenario, translate|
+      create_method(translate.to_sym) { scenario.to_sym }
+    end
+
+    @all_scenarios = Dir['scenarios/*.md']
   end
 
   def create_method(name, &block)

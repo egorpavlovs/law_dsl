@@ -39,11 +39,21 @@ class TranslateService
   def get_args_with_translate()
     res = {}
     @translate_config['methods'].keys.each do |method_name|
-      @translate_config.dig(*%W(methods #{method_name} args)).each do |arg, translate|
+      @translate_config.dig(*%W(methods #{method_name} args))&.each do |arg, translate|
         res.merge!({
-          arg => translate.to_s
+          arg => translate
         })
       end
+    end
+    res
+  end
+
+  def get_scenarios_with_translate()
+    res = {}
+    @translate_config['scenarios'].each do |scenario_name, translate_scenario_name|
+      res.merge!({
+        scenario_name => translate_scenario_name.to_s
+      })
     end
     res
   end

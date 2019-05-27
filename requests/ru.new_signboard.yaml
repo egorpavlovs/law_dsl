@@ -1,18 +1,30 @@
 ---
-applicant: natural person
-project_number: 123
+applicant:
+  role: natural person
+  confirmed_from_esia: true
+project_data:
+  id: 123
+  confirmed_from_department: true
 esia_data: 789
-situational_plan: https://example.com/1
-statement_sni: https://example.com/2
+situational_plan:
+  file: https://example.com/1
+statement_sni:
+  file: https://example.com/2
 technical_inventory_documents:
   - name: план помещения
     document: https://example.com/3
+    confirmed_from_department: true
 photos_initial_situation:
-  - https://example.com/4
-  - https://example.com/5
+  confirmed_from_department: true
+  files:
+    - https://example.com/4
+    - https://example.com/5
 topographic_plan_with_scale:
+  confirmed_from_department: true
   file: https://example.com/6
   scale: 1:200
 photos_projected_constructions:
-  - https://example.com/7
-  - https://example.com/8
+  confirmed_from_department: true
+  files:
+    - https://example.com/7
+    - https://example.com/8
