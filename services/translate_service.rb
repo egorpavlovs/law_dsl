@@ -28,9 +28,9 @@ class TranslateService
 
   def get_method_names_with_translate()
     res = {}
-    @translate_config['methods'].keys.each do |method_name|
+    @translate_config['methods'].each do |method_name, translate|
       res.merge!({
-        method_name => @translate_config.dig(*%W(methods #{method_name} name)).to_s
+        method_name => translate.dig('name').to_s
       })
     end
     res
@@ -38,8 +38,8 @@ class TranslateService
 
   def get_args_with_translate()
     res = {}
-    @translate_config['methods'].keys.each do |method_name|
-      @translate_config.dig(*%W(methods #{method_name} args))&.each do |arg, translate|
+    @translate_config['methods'].each do |method_name, value|
+      value.dig('args')&.each do |arg, translate|
         res.merge!({
           arg => translate
         })
