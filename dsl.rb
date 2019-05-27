@@ -5,7 +5,7 @@ class Dsl
   include LoadRelatives
 
   def self.make_decision(request_data, scenario, response_language)
-    scenario_language = File.basename(scenario).split('.').first
+    scenario_language = File.basename(scenario).split('.')[1]
     dsl = Dsl.new(request_data, scenario_language, response_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
     # p self.ancestors
@@ -26,6 +26,7 @@ class Dsl
     @response_language = response_language
     @translate_scenario = TranslateService.new(scenario_language)
     @translate_response = TranslateService.new(response_language)
+    @all_scenarios = Dir['scenarios/*.md']
 
     #переписать покороче и покрасивее создание алиасов и методов
     method_names_with_translates = @translate_scenario.get_method_names_with_translate()
@@ -43,7 +44,6 @@ class Dsl
       create_method(translate.to_sym) { scenario.to_sym }
     end
 
-    @all_scenarios = Dir['scenarios/*.md']
   end
 
   def create_method(name, &block)
