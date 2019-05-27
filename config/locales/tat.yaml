@@ -2,85 +2,120 @@ methods:
   natural_person?:
     name: физик_зат?
     args:
-      applicant: гариза_бирүче
+      applicant:
+        - гариза_бирүче
     responses:
       natural_person: "Гариза бирүче булып тора физик зат"
       not_natural_person: "Гариза бирүче булып тормый физик зат"
   legal_entity?:
     name: юридик_зат?
     args:
-      applicant: гариза_бирүче
+      applicant:
+        - гариза_бирүче
     responses:
       legal_entity: "Мөрәҗәгать итүче юридик зат булып тора"
       not_legal_entity: "Гариза бирүче түгел юридик зат"
   individual_entrepreneur?:
     name: шәхси_эшмәкәр?
     args:
-      applicant: гариза_бирүче
+      applicant:
+        - гариза_бирүче
     responses:
       individual_entrepreneur: "Гариза бирүче шәхси эшмәкәр булып тора"
       not_individual_entrepreneur: "Гариза бирүче шәхси эшмәкәр булып тормый"
   agent?:
     name: вәкил?
     args:
-      applicant: гариза_бирүче
+      applicant:
+        - гариза_бирүче
     responses:
       agent: "Гариза бирүче вәкиле булып тора вәкиле"
       not_agent: "Гариза бирүче түгел вәкиле"
   applicant_identity_esia?:
     name: шәхес_раслау_аша_есиа?
     args:
-      esia_data: мөрәҗәгать_итүче_есиа_реквизитлары
+      esia_data:
+        - мөрәҗәгать_итүче_есиа_реквизитлары
     responses:
       esia_data_present: "Шәхес гариза бирүче подтверждена аша есиа"
       esia_data_not_present: "Шәхес гариза бирүче түгел подтверждена аша есиа"
   project_agreed?:
     name: проект_килештерелгән?
     args:
-      project_number: проектның_номеры
+      project_number:
+        - проектның_номеры
     responses:
       project_agreed: "Әлеге проект килештерелгән"
       project_not_agreed: "Әлеге проект килештерелмәгән"
   statement_sni_filed?:
     name: сни_электрон_гаризасы_бирелдеме?
     args:
-      statement_sni: гариза_сни
+      statement_sni:
+        - гариза_сни
     responses:
       statement_sni_filed: "Сни электрон гаризасы бирелде"
       statement_sni_not_filed: "Сни электрон гариза бирелмәгән"
   technical_inventory_documents_represented?:
     name: техник_инвентаризация_документлары_бармы?
     args:
-      technical_inventory_documents: техник_инвентаризация_документлары
+      technical_inventory_documents:
+        - техник_инвентаризация_документлары
     responses:
       technical_inventory_documents_represented: "Техник инвентаризация документлары тәкъдим ителде"
       technical_inventory_documents_not_represented: "Техник инвентаризация документлары тәкъдим ителмәгән"
   photos_initial_situation_presented?:
     name: башлангыч_ситуацияне_фотофиксацияләү_тәкъдим_ителде?
     args:
-      photos_initial_situation: фоторәсемнәр_башлангыч_хәлне
+      photos_initial_situation:
+        - фоторәсемнәр_башлангыч_хәлне
     responses:
       photos_initial_situation_presented: "Башлангыч ситуацияне фотофиксацияләү тәкъдим ителде"
       photos_initial_situation_not_presented: "Башлангыч ситуацияне фотофиксацияләү тәкъдим ителми"
   situational_plan_presented?:
     name: ситуационный_планы_тәкъдим_ителде?
     args:
-      situational_plan: ситуационный_планы
+      situational_plan:
+        - ситуационный_планы
     responses:
       situational_plan_presented: "Ситуацион план тәкъдим ителде"
       situational_plan_not_presented: "Ситуационный планы тәкъдим ителмәгән"
   photos_projected_constructions_presented?:
     name: проектлана_торган_конструкцияләр_сурәтләре_тәкъдим_ителгән?
     args:
-      photos_projected_constructions: проектлана_торган_конструкцияләр_сурәтләре
+      photos_projected_constructions:
+        - проектлана_торган_конструкцияләр_сурәтләре
     responses:
       photos_projected_constructions_presented: "Проектлана торган конструкцияләр сурәтләре тәкъдим ителгән"
       photos_projected_constructions_not_presented: "Проектлана торган конструкцияләр сурәтләре тәкъдим ителмәгән"
   topographic_plan_with_scale_presented?:
     name: маштаб_белән_топографик_план_тәкъдим_ителгән?
     args:
-      topographic_plan_with_scale: маштаблы_топографик_план
+      topographic_plan_with_scale:
+        - маштаблы_топографик_план
     responses:
       topographic_plan_with_scale_presented: "Топографик план туры килә торган форматта тәкъдим ителгән"
       topographic_plan_with_scale_not_presented: "Топографик план тәкъдим ителмәгән"
       topographic_plan_with_wrong_scale_presented: "Топографик план туры килмәслек форматта тәкъдим ителгән"
+  egrul_id_document_represented?:
+    args:
+      ИдДок:
+        - егрюл_документының_идентификация_номеры
+        - egrul_id_document
+    responses:
+      id_document_present: "Идентификационный номер документа из ЕГРЮЛ представлен"
+      id_document_not_present: "Идентификационный номер документа из ЕГРЮЛ не представлен"
+  egrul_legal_entity_information_represented?:
+    name: ЕГРЮЛдан_мәгълүмат_бармы?
+    args:
+      СвЮЛ:
+        - юридик_зат_егрюл_мәгълүматлары
+        - egrul_legal_entity_information
+    responses:
+      egrul_legal_entity_information_present: "Сведения о юридическом лице из ЕГРЮЛ представлены"
+      egrul_legal_entity_information_not_present: "Сведения о юридическом лице из ЕГРЮЛ не представлены"
+  execute_scenario:
+    name: сценарийны_башкару
+
+
+scenarios:
+  egrul_scenario: сценарий_обработки_егрюл

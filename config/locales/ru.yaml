@@ -2,84 +2,96 @@ methods:
   natural_person?:
     name: физическое_лицо?
     args:
-      applicant: заявитель
+      applicant:
+        - заявитель
     responses:
       natural_person: "Заявитель является физическим лицом"
       not_natural_person: "Заявитель не является физическим лицом"
   legal_entity?:
     name: юридическое_лицо?
     args:
-      applicant: заявитель
+      applicant:
+        - заявитель
     responses:
       legal_entity: "Заявитель является юридическим лицом"
       not_legal_entity: "Заявитель не является юридическим лицом"
   individual_entrepreneur?:
     name: индивидуальный_предприниматель?
     args:
-      applicant: заявитель
+      applicant:
+        - заявитель
     responses:
       individual_entrepreneur: "Заявитель является индивидуальным предпринимателем"
       not_individual_entrepreneur: "Заявитель не является индивидуальным предпринимателем"
   agent?:
     name: представитель?
     args:
-      applicant: заявитель
+      applicant:
+        - заявитель
     responses:
       agent: "Заявитель является представителем"
       not_agent: "Заявитель не является представителем"
   applicant_identity_esia?:
     name: личность_подтверждена_через_есиа?
     args:
-      esia_data: реквизиты_есиа_заявителя
+      esia_data:
+        - реквизиты_есиа_заявителя
     responses:
       esia_data_present: "Личность заявителя подтверждена через есиа"
       esia_data_not_present: "Личность заявителя не подтверждена через есиа"
   project_agreed?:
     name: проект_согласован?
     args:
-      project_data: данные_проекта
+      project_data:
+        - данные_проекта
     responses:
       project_agreed: "Данный проект согласован"
       project_not_agreed: "Данный проект не согласован"
   statement_sni_filed?:
     name: электронное_заявление_сни_подано?
     args:
-      statement_sni: заявление_сни
+      statement_sni:
+        - заявление_сни
     responses:
       statement_sni_filed: "Электронное заявление сни подано"
       statement_sni_not_filed: "Электронное заявление сни не подано"
   technical_inventory_documents_represented?:
     name: документы_технической_инвентаризации_представлены?
     args:
-      technical_inventory_documents: документы_технической_инвентаризации
+      technical_inventory_documents:
+        - документы_технической_инвентаризации
     responses:
       technical_inventory_documents_represented: "Документы технической инвентаризации представлены"
       technical_inventory_documents_not_represented: "Документы технической инвентаризации не представлены"
   photos_initial_situation_presented?:
     name: фотофиксация_исходной_ситуации_представлена?
     args:
-      photos_initial_situation: фотографии_исходной_ситуации
+      photos_initial_situation:
+        - фотографии_исходной_ситуации
     responses:
       photos_initial_situation_presented: "Фотофиксация исходной ситуации представлена"
       photos_initial_situation_not_presented: "Фотофиксация исходной ситуации не представлена"
   situational_plan_presented?:
     name: ситуационный_план_представлен?
     args:
-      situational_plan: ситуационный_план
+      situational_plan:
+        - ситуационный_план
     responses:
       situational_plan_presented: "Ситуационный план представлен"
       situational_plan_not_presented: "Ситуационный план не представлен"
   photos_projected_constructions_presented?:
     name: изображения_проектируемых_конструкций_представлены?
     args:
-      photos_projected_constructions: изображения_проектируемых_конструкций
+      photos_projected_constructions:
+        - изображения_проектируемых_конструкций
     responses:
       photos_projected_constructions_presented: "Изображения проектируемых конструкций представлены"
       photos_projected_constructions_not_presented: "Изображения проектируемых конструкций не представлены"
   topographic_plan_with_scale_presented?:
     name: топографический_план_с_маштабом_представлен?
     args:
-      topographic_plan_with_scale: топографический_план_с_маштабом
+      topographic_plan_with_scale:
+        - топографический_план_с_маштабом
     responses:
       topographic_plan_with_scale_presented: "Топографический план представлен в подходящем формате"
       topographic_plan_with_scale_not_presented: "Топографический план не представлен"
@@ -87,7 +99,8 @@ methods:
   information_from_egrul_represented?:
     name: информация_из_егрюл_представлена?
     args:
-      egrul_query_result: данные_компании_из_егрюл
+      egrul_query_result:
+        - данные_компании_из_егрюл
     responses:
       information_from_egrul_present: "Результат запроса из ЕГРЮЛ предоставлен"
       information_from_egrul_not_present: "Результат запроса из ЕГРЮЛ не предоставлен"
@@ -96,17 +109,15 @@ methods:
       ИдДок:
         - идентификационный_номер_документа_егрюл
         - egrul_id_document
-      # ИдДок: идентификационный_номер_документа_егрюл
-      # egrul_id_document: идентификационный_номер_документа_егрюл
-      # ИдДок: egrul_id_document
     responses:
       id_document_present: "Идентификационный номер документа из ЕГРЮЛ представлен"
       id_document_not_present: "Идентификационный номер документа из ЕГРЮЛ не представлен"
   egrul_legal_entity_information_represented?:
     name: информацция_из_егрюл_представлена?
     args:
-      # СвЮЛ: сведения_юридического_лица_егрюл
-      СвЮЛ: egrul_legal_entity_information
+      СвЮЛ:
+        - сведения_юридического_лица_егрюл
+        - egrul_legal_entity_information
     responses:
       egrul_legal_entity_information_present: "Сведения о юридическом лице из ЕГРЮЛ представлены"
       egrul_legal_entity_information_not_present: "Сведения о юридическом лице из ЕГРЮЛ не представлены"

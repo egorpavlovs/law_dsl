@@ -33,9 +33,7 @@ class Dsl
       self.class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
-    args_with_translate.each do |arg, translate|
-      # убрать этот костыль и добавить массив для всех в ru.yaml
-      translates = [translate].flatten
+    args_with_translate.each do |arg, translates|
       res = @request_hash[arg]
       create_method(arg.to_sym) { res }
       translates.each{ |translate_arg| create_method(translate_arg.to_sym) { res } }
