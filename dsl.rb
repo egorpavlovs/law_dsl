@@ -35,7 +35,8 @@ class Dsl
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translates|
-      res = @request_hash[arg]
+      # res = @request_hash[arg] || [arg, @request_hash]
+      res = [arg, @request_hash]
       create_method(arg.to_sym) { res }
       translates.each{ |translate_arg| create_method(translate_arg.to_sym) { res } }
     end
@@ -43,7 +44,6 @@ class Dsl
     scenarios_with_translate.each do |scenario, translate|
       create_method(translate.to_sym) { scenario.to_sym }
     end
-
   end
 
   def create_method(name, &block)
@@ -74,16 +74,14 @@ class Dsl
         get_responses(reject_dsl_operand)
       end
     end
-
-    {
-      "allowed"=>reject_dsl_operands.empty?,
-      "responses"=>responses.flatten
-    }
+    DslOperand.new(reject_dsl_operands.empty?, responses.compact, nil)
   end
 
   def get_responses(dsl_operand)
     if dsl_operand.response.is_a?(String)
         @translate_response.from_key_path(["methods", dsl_operand.method_name, "responses", dsl_operand.response].join("."))
+    elsif dsl_operand.response.is_a?(Array)
+      dsl_operand.response.compact
     else
       dsl_operand.response.map{ |dsl_operand_response|
         get_responses(dsl_operand_response)

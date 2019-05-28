@@ -2,7 +2,7 @@ methods:
   natural_person?:
     name: физическое_лицо?
     args:
-      applicant:
+      applicant_role:
         - заявитель
     responses:
       natural_person: "Заявитель является физическим лицом"
@@ -96,34 +96,31 @@ methods:
       topographic_plan_with_scale_presented: "Топографический план представлен в подходящем формате"
       topographic_plan_with_scale_not_presented: "Топографический план не представлен"
       topographic_plan_with_wrong_scale_presented: Топографический план представлен в не подходящем формате
-  information_from_egrul_represented?:
-    name: информация_из_егрюл_представлена?
+  execute_scenario:
+    name: выполнить_сценарий
     args:
       egrul_query_result:
         - данные_компании_из_егрюл
-    responses:
-      information_from_egrul_present: "Результат запроса из ЕГРЮЛ предоставлен"
-      information_from_egrul_not_present: "Результат запроса из ЕГРЮЛ не предоставлен"
-  egrul_id_document_represented?:
+  legal_entity_liquidate?:
+    name: юридическое_лицо_ликвидированно?
     args:
-      ИдДок:
-        - идентификационный_номер_документа_егрюл
-        - egrul_id_document
+      СвСтатус:
+        - статус_юридического_лица
+        - legal_entity_status
     responses:
-      id_document_present: "Идентификационный номер документа из ЕГРЮЛ представлен"
-      id_document_not_present: "Идентификационный номер документа из ЕГРЮЛ не представлен"
-  egrul_legal_entity_information_represented?:
-    name: информацция_из_егрюл_представлена?
+      legal_entity_liquidate: "Юридическое лицо ликвидированно"
+      legal_entity_not_liquidate: "Юридическое лицо не ликвидированно"
+  can_applicant_represent_legal_entity?:
+    name: заявитель_может_представлять_юридическое_лицо?
     args:
-      СвЮЛ:
-        - сведения_юридического_лица_егрюл
-        - egrul_legal_entity_information
+      applicant:
+        - заявитель
+      СведДолжнФЛ:
+        - agents_from_egrul
+        - представители_указанные_в_егрюл
     responses:
-      egrul_legal_entity_information_present: "Сведения о юридическом лице из ЕГРЮЛ представлены"
-      egrul_legal_entity_information_not_present: "Сведения о юридическом лице из ЕГРЮЛ не представлены"
-  execute_scenario:
-    name: выполнить_сценарий
-
+      applicant_can_represent_legal_entity: "Заявитель может представлять юридическое лицо"
+      applicant_cant_represent_legal_entity: "Заявитель не может представлять юридическое лицо"
 
 scenarios:
   egrul_scenario: сценарий_обработки_егрюл

@@ -8,8 +8,10 @@ project_data:
 esia_data: 789
 situational_plan:
   file: https://example.com/1
+  confirmed_from_department: true
 statement_sni:
   file: https://example.com/2
+  confirmed_from_department: true
 technical_inventory_documents:
   - name: план помещения
     document: https://example.com/3

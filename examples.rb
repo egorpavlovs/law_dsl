@@ -36,4 +36,4 @@ require_relative 'dsl'
 scenario = 'scenarios/decision.ru.md'
 request_file_name = 'requests/queries/ispolkom_egrul.json'
 request =JSON.parse(File.read(request_file_name))
-p Dsl.make_decision(request, scenario, 'ru')
+p Dsl.make_decision(request, scenario, 'ru').hash_format

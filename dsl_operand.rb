@@ -39,4 +39,10 @@ class DslOperand
   alias_method :или,:|
   alias_method :и,:&
 
+  def hash_format
+    {
+      "allowed" => self.allowed,
+      "response" => self.response.flatten
+    }
+  end
 end
