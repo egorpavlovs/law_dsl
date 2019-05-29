@@ -130,6 +130,42 @@ methods:
     responses:
       applicant_can_represent_legal_entity: "Заявитель может представлять юридическое лицо"
       applicant_cant_represent_legal_entity: "Заявитель не может представлять юридическое лицо"
+  region_registration_legal_entity_match_egrul?:
+    name: регион_регистрации_из_егрюл_юридического_лица_соответствует?
+    args:
+      НаимРегион:
+        - region_registration_legal_entity_name
+        - регион_регистрации_юридического_лица_егрюл
+    responses:
+      region_registration_legal_entity_match: "регион_регистрации_юридического_лица_соответствует_егрюл"
+      region_registration_legal_entity_not_match: "регион_регистрации_юридического_лица_не соответствует_егрюл"
+  city_registration_legal_entity_match_egrul?:
+    name: город_регистрации_из_егрюл_юридического_лица_соответствует?
+    args:
+      НаимГород:
+        - city_registration_legal_entity_name
+        - город_регистрации_юридического_лица_егрюл
+    responses:
+      city_registration_legal_entity_match: "город_регистрации_юридического_лица_соответствует_егрюл"
+      city_registration_legal_entity_not_match: "город_регистрации_юридического_лица_не соответствует_егрюл"
+  legal_entity_registered_more_given_years?:
+    name: юридическое_лицо_зарегистрированно_больше_указанных_лет?
+    args:
+      ДатаОГРН:
+        - date_registration_legal_entity
+        - дата_регистрации_юридического_лица
+    responses:
+      legal_entity_registered_more_given_years: "Дата регистрации юридического лица подходит для данного документа"
+      legal_entity_registered_less_given_years: "Юридическое лицо зарегистрированно менее необходимого времени"
+  legal_entity_registered_in_given_pension_fund?:
+    name: юридическое_лицо_зарегистрированно_в_указанном_пенсионном_фонде?
+    args:
+      КодПФ:
+        - code_pension_fund_from_egrul
+        - код_пенсионного_фонда_из_егрюл
+    responses:
+      legal_entity_registered_in_given_pension_fund: "Юридическое лицо зарегистрированно в указанном пенсионном фонде"
+      legal_entity_not_registered_in_given_pension_fund: "Юридическое лицо не зарегистрированно в указанном пенсионном фонде"
 
 scenarios:
   egrul_scenario: сценарий_обработки_егрюл
