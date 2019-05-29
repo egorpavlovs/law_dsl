@@ -110,6 +110,15 @@ methods:
     responses:
       legal_entity_liquidate: "Юридическое лицо ликвидированно"
       legal_entity_not_liquidate: "Юридическое лицо не ликвидированно"
+  legal_entity_process_liquidate?:
+    name: юридическое_лицо_в_процессе_ликвидации?
+    args:
+      СвСтатус:
+        - статус_юридического_лица
+        - legal_entity_status
+    responses:
+      legal_entity_process_liquidate: "Юридическое лицо в процессе ликвидации"
+      legal_entity_not_process_liquidate: "Юридическое лицо не в процессе ликвидации"
   can_applicant_represent_legal_entity?:
     name: заявитель_может_представлять_юридическое_лицо?
     args:

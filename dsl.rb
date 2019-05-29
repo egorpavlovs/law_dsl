@@ -78,14 +78,14 @@ class Dsl
   end
 
   def get_responses(dsl_operand)
-    if dsl_operand.response.is_a?(String)
-        @translate_response.from_key_path(["methods", dsl_operand.method_name, "responses", dsl_operand.response].join("."))
-    elsif dsl_operand.response.is_a?(Array)
-      dsl_operand.response.compact
+    if dsl_operand.is_a?(String)
+      dsl_operand
+    elsif dsl_operand.response.is_a?(String)
+        @translate_response.from_key_path(["methods", dsl_operand.method_name, "responses", dsl_operand.response].join(".")) || dsl_operand.response
     else
       dsl_operand.response.map{ |dsl_operand_response|
         get_responses(dsl_operand_response)
-      }
+      }.join(", ")
     end
   end
 end

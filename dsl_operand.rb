@@ -22,7 +22,7 @@ class DslOperand
 
   def & (operand)
     if allowed && operand.allowed
-      self
+      DslOperand.new(true, [self, operand].flatten, nil)
     elsif allowed && !operand.allowed
       operand
     elsif !allowed && operand.allowed
