@@ -28,14 +28,12 @@ class Dsl
     @translate_response = TranslateService.new(response_language)
     @all_scenarios = Dir['scenarios/*.md']
 
-    #переписать покороче и покрасивее создание алиасов и методов
     method_names_with_translates = @translate_scenario.get_method_names_with_translate()
     method_names_with_translates.each do |method_name, method_name_translate|
       self.class.send(:alias_method, method_name_translate.to_sym, method_name.to_sym)
     end
     args_with_translate = @translate_scenario.get_args_with_translate()
     args_with_translate.each do |arg, translates|
-      # res = @request_hash[arg] || [arg, @request_hash]
       res = [arg, @request_hash]
       create_method(arg.to_sym) { res }
       translates.each{ |translate_arg| create_method(translate_arg.to_sym) { res } }

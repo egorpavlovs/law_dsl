@@ -36,9 +36,6 @@ class DslOperand
     DslOperand.new(!allowed, response, method_name)
   end
 
-  alias_method :или,:|
-  alias_method :и,:&
-
   def hash_format
     {
       "allowed" => self.allowed,

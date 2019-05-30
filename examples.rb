@@ -12,10 +12,10 @@ require_relative 'dsl'
 # p Dsl.make_decision(request, scenario, 'ru')
 
 
-# scenario = 'scenarios/new_signboard/new_signboard.ru.md'
-# request_file_name = 'requests/ru.new_signboard.yaml'
-# request =YAML::load(File.open(request_file_name))
-# p Dsl.make_decision(request, scenario, 'ru').hash_format
+scenario = 'scenarios/new_signboard/new_signboard.ru.md'
+request_file_name = 'requests/ru.new_signboard.yaml'
+request =YAML::load(File.open(request_file_name))
+p Dsl.make_decision(request, scenario, 'ru').hash_format
 
 
 # request = {
@@ -33,7 +33,7 @@ require_relative 'dsl'
 # request =YAML::load(File.open(request_file_name))
 # p Dsl.make_decision(request, scenario, 'ru')
 
-scenario = 'scenarios/take_permission.ru.md'
-request_file_name = 'requests/queries/ispolkom_egrul.json'
-request =JSON.parse(File.read(request_file_name))
-p Dsl.make_decision(request, scenario, 'ru').hash_format
+# scenario = 'scenarios/take_permission.ru.md'
+# request_file_name = 'requests/queries/ispolkom_egrul.json'
+# request =JSON.parse(File.read(request_file_name))
+# p Dsl.make_decision(request, scenario, 'ru').hash_format

@@ -6,7 +6,7 @@ module ApplicantMethods
     method_name =__method__.to_s
     key_with_data = args.first
     key = key_with_data.first
-    allowed = key_with_data.last.dig(*%w(applicant role)) == "natural person"
+    allowed = key_with_data.last.dig(*%w(applicant confirmed_from_esia)) && key_with_data.last.dig(*%w(applicant role)) == "natural person"
     response = allowed ? "natural_person" : "not_natural_person"
     format_result_methods_response(method_name, allowed, response)
   end
@@ -15,7 +15,7 @@ module ApplicantMethods
     method_name =__method__.to_s
     key_with_data = args.first
     key = key_with_data.first
-    allowed = key_with_data.last.dig(*%w(applicant role)) == "legal entity"
+    allowed = key_with_data.last.dig(*%w(applicant confirmed_from_esia)) && key_with_data.last.dig(*%w(applicant role)) == "legal entity"
     response = allowed ? "legal_entity" : "not_legal_entity"
     format_result_methods_response(method_name, allowed, response)
   end
@@ -24,7 +24,7 @@ module ApplicantMethods
     method_name =__method__.to_s
     key_with_data = args.first
     key = key_with_data.first
-    allowed = key_with_data.last.dig(*%w(applicant role)) == "individual entrepreneur"
+    allowed = key_with_data.last.dig(*%w(applicant confirmed_from_esia)) && key_with_data.last.dig(*%w(applicant role)) == "individual entrepreneur"
     response = allowed ? "individual_entrepreneur" : "not_individual_entrepreneur"
     format_result_methods_response(method_name, allowed, response)
   end
@@ -33,7 +33,7 @@ module ApplicantMethods
     method_name =__method__.to_s
     key_with_data = args.first
     key = key_with_data.first
-    allowed = key_with_data.last.dig(*%w(applicant role)) == "agent"
+    allowed = key_with_data.last.dig(*%w(applicant confirmed_from_esia)) && key_with_data.last.dig(*%w(applicant role)) == "agent"
     response = allowed ? "agent" : "not_agent"
     format_result_methods_response(method_name, allowed, response)
   end
