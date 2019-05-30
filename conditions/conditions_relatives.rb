@@ -11,7 +11,8 @@ module ConditionsRelatives
 
   def project_agreed?(*args)
     method_name =__method__.to_s
-    allowed = !args.first.nil?
+    project_data = args.flatten.last[args.flatten.first]
+    allowed = project_data['confirmed_from_department']
     response = allowed ? 'project_agreed' : 'project_not_agreed'
     format_result_methods_response(method_name, allowed, response)
   end
