@@ -10,15 +10,12 @@ module DocumentsMethods
   end
 
   def technical_inventory_documents_represented?(*args)
-    # pp args
     input_data = args.first
     documents_names = args.last
     method_name =__method__.to_s
     documents = input_data.last.dig(*%W(#{input_data.first}))
 
     method_name =__method__.to_s
-    # documents = args.first
-    # documents_names = args.last
     errors = documents_names.map do |document_name|
       unless documents.map{|e| e['name'] if e['confirmed_from_department']}.compact.include?(document_name)
         document_name

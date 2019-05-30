@@ -169,3 +169,4 @@ methods:
 
 scenarios:
   egrul_scenario: сценарий_обработки_егрюл
+  take permission: получить_разрешение
