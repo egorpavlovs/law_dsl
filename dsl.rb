@@ -8,10 +8,7 @@ class Dsl
     scenario_language = File.basename(scenario).split('.')[1]
     dsl = Dsl.new(request_data, scenario_language, response_language)
     lines =  File.open(scenario){ |file| file.read }.delete("\n").split("- ").delete_if(&:empty?)
-    # p self.ancestors
     results = lines.compact.map do |line|
-    # p self.methods
-      # p line
       dsl.instance_eval line
     end
     dsl.join_scenario_results(results)

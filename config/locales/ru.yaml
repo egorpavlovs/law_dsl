@@ -137,8 +137,8 @@ methods:
         - region_registration_legal_entity_name
         - регион_регистрации_юридического_лица_егрюл
     responses:
-      region_registration_legal_entity_match: "регион_регистрации_юридического_лица_соответствует_егрюл"
-      region_registration_legal_entity_not_match: "регион_регистрации_юридического_лица_не соответствует_егрюл"
+      region_registration_legal_entity_match: "Для данного документа регион регистрации юридического лица соответствует необходимому"
+      region_registration_legal_entity_not_match: "Для данного документа регион регистрации юридического лица не соответствует необходимому"
   city_registration_legal_entity_match_egrul?:
     name: город_регистрации_из_егрюл_юридического_лица_соответствует?
     args:
@@ -146,8 +146,8 @@ methods:
         - city_registration_legal_entity_name
         - город_регистрации_юридического_лица_егрюл
     responses:
-      city_registration_legal_entity_match: "город_регистрации_юридического_лица_соответствует_егрюл"
-      city_registration_legal_entity_not_match: "город_регистрации_юридического_лица_не соответствует_егрюл"
+      city_registration_legal_entity_match: "Для данного документа город регистрации юридического лица соответствует необходимому"
+      city_registration_legal_entity_not_match: "Для данного документа город регистрации юридического лица не соответствует необходимому"
   legal_entity_registered_more_given_years?:
     name: юридическое_лицо_зарегистрированно_больше_указанных_лет?
     args:
@@ -169,4 +169,4 @@ methods:
 
 scenarios:
   egrul_scenario: сценарий_обработки_егрюл
-  take permission: получить_разрешение
+  take_permission: получить_разрешение

@@ -115,7 +115,75 @@ methods:
       egrul_legal_entity_information_not_present: "Сведения о юридическом лице из ЕГРЮЛ не представлены"
   execute_scenario:
     name: сценарийны_башкару
-
+    args:
+      egrul_query_result:
+        - әлеге_компанияләр_егрюлдан
+  legal_entity_liquidate?:
+    name: юридик_зат_бетерелгән?
+    args:
+      СвСтатус:
+        - юридик_зат_статусы
+        - legal_entity_status
+    responses:
+      legal_entity_liquidate: "Юридик зат бетерелгән"
+      legal_entity_not_liquidate: "Юридик зат юк ителде"
+  legal_entity_process_liquidate?:
+    name: юридик_зат_бетерү_процессында?
+    args:
+      СвСтатус:
+        - юридик_зат_статусы
+        - legal_entity_status
+    responses:
+      legal_entity_process_liquidate: "Юридик зат бетерү процессында"
+      legal_entity_not_process_liquidate: "Юридик зат түгел процессында бетерү"
+  can_applicant_represent_legal_entity?:
+    name: гариза_бирүче_юридик_зат_исеменнән_катнаша_ала?
+    args:
+      applicant:
+        - гариза_бирүче
+      СведДолжнФЛ:
+        - agents_from_egrul
+        - егрюлга_күрсәтелгән_вәкилләр
+    responses:
+      applicant_can_represent_legal_entity: "Гариза бирүче юридик зат тапшыра ала"
+      applicant_cant_represent_legal_entity: "Гариза бирүче юридик зат тапшыра алмый"
+  region_registration_legal_entity_match_egrul?:
+    name: юридик_зат_егрюлыннан_теркәү_төбәге_туры_килә?
+    args:
+      НаимРегион:
+        - region_registration_legal_entity_name
+        - егрюлның_юридик_затны_теркәү_төбәге
+    responses:
+      region_registration_legal_entity_match: "Әлеге документ өчен юридик затларны теркәү төбәге кирәкле таләпләргә туры килә"
+      region_registration_legal_entity_not_match: "Әлеге документ өчен юридик затларны теркәү төбәге кирәкле таләпләргә туры килми"
+  city_registration_legal_entity_match_egrul?:
+    name: юридик_зат_егрюлыннан_теркәү_шәһәре_туры_килә?
+    args:
+      НаимГород:
+        - city_registration_legal_entity_name
+        - юридик_затның_теркәү_шәһәре_егрюл
+    responses:
+      city_registration_legal_entity_match: "Юридик затның теркәү шәһәре әлеге документ өчен кирәкле таләпләргә туры килә"
+      city_registration_legal_entity_not_match: "Юридик затның теркәү шәһәре әлеге документ өчен кирәкле таләпләргә туры килми"
+  legal_entity_registered_more_given_years?:
+    name: юридик_зат_әлеге_елдан_артык_теркәлде?
+    args:
+      ДатаОГРН:
+        - date_registration_legal_entity
+        - юридик_шәхесне_теркәү_датасы
+    responses:
+      legal_entity_registered_more_given_years: "Юридик затны теркәү датасы әлеге документ өчен туры килә"
+      legal_entity_registered_less_given_years: "Юридик зат теркәлгән ким кирәкле вакыт"
+  legal_entity_registered_in_given_pension_fund?:
+    name: юридик_зат_күрсәтелгән_пенсия_фондында_теркәлгән?
+    args:
+      КодПФ:
+        - code_pension_fund_from_egrul
+        - егрюлдан_пенсия_фонды_коды
+    responses:
+      legal_entity_registered_in_given_pension_fund: "Юридик зат күрсәтелгән Пенсия фондында теркәлгән"
+      legal_entity_not_registered_in_given_pension_fund: "Юридик зат күрсәтелгән Пенсия фондында теркәлмәгән"
 
 scenarios:
-  egrul_scenario: сценарий_обработки_егрюл
+  egrul_scenario: егрюлны_эшкәртү_сценарие
+  take_permission: алырга_рөхсәт
